@@ -1,0 +1,74 @@
+---
+title: Realtime Analytics Platform
+slug: realtime-analytics
+summary: Streaming dashboards that turn millions of events into sub-second insights for product teams.
+date: 2025-03-10
+tags:
+  - Next.js
+  - PostgreSQL
+  - WebSockets
+cover: /work/realtime-analytics.svg
+liveUrl: https://example.com
+repoUrl: https://github.com/
+featured: true
+role: Lead Full-Stack Developer
+duration: 6 months
+---
+
+import { Callout } from "@/components/mdx";
+
+## Problem
+
+Product teams were flying blind: usage data lived in nightly batch jobs, so the
+dashboards everyone made decisions from were always at least a day stale. Analysts
+exported raw CSVs to answer simple questions, and the support team could not tell
+whether an incident was affecting one customer or ten thousand.
+
+The existing reporting stack could not keep up with the event volume — queries
+against the monolithic database regularly timed out, and the UI refreshed on a
+hard-coded timer regardless of whether anything had changed.
+
+## Approach
+
+I built an event pipeline that separates ingestion from presentation:
+
+1. Services publish domain events to a partitioned stream.
+2. A worker aggregates events into rolling windows and writes them to
+   purpose-built summary tables.
+3. Subscribed dashboards receive only the deltas that changed, keeping the client
+   payload tiny.
+
+The client subscribes over a WebSocket and reconciles updates against local state,
+so charts animate from the previous value instead of jumping.
+
+```ts
+export function subscribe(onUpdate: (delta: Delta) => void) {
+  const socket = new WebSocket(process.env.NEXT_PUBLIC_STREAM_URL!);
+
+  socket.addEventListener("message", (message) => {
+    onUpdate(JSON.parse(message.data) as Delta);
+  });
+
+  return () => socket.close();
+}
+```
+
+<Callout type="tip">
+  Reconnecting with exponential backoff mattered more than the streaming
+  protocol itself — flaky office Wi-Fi was the real production network.
+</Callout>
+
+![Event flow from ingestion to dashboard](/work/diagram.svg)
+
+## Stack
+
+- **Next.js** and React for the dashboard shell, streamed with server components
+- **PostgreSQL** materialized summaries with continuous aggregates
+- **WebSockets** for delta delivery, with a polling fallback
+- **TypeScript** end to end, including the event schemas shared between services
+
+## Results
+
+- Dashboard queries went from **12s p95 to under 200ms**
+- Data freshness dropped from **24 hours to under 2 seconds**
+- Support resolved incidents faster with live impact counts instead of guesses

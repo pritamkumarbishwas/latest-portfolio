@@ -1,0 +1,66 @@
+---
+title: Headless Commerce Storefront
+slug: headless-commerce
+summary: Composable storefront with edge-rendered product pages and a checkout tuned for Core Web Vitals.
+date: 2024-06-15
+tags:
+  - React
+  - TypeScript
+  - Stripe
+cover: /work/headless-commerce.svg
+liveUrl: https://example.com
+repoUrl: https://github.com/
+featured: true
+role: Full-Stack Developer
+duration: 4 months
+---
+
+import { Callout } from "@/components/mdx";
+
+## Problem
+
+The client's legacy storefront coupled content, catalog, and checkout into one
+monolithic app. Merchandisers could not ship a landing page without a deploy, page
+loads hovered around four seconds on mobile, and every seasonal campaign added
+another round of performance regressions.
+
+Checkout was the worst offender: a third-party script bundle blocked rendering on
+the one page that directly influenced revenue.
+
+## Approach
+
+I separated the system into three composable layers:
+
+1. **Content and catalog** were modeled as APIs with typed clients, so pages could
+   be composed per route instead of rendered from a single template.
+2. **Product pages rendered at the edge**, cached by SKU with tag-based
+   invalidation when inventory or pricing changed.
+3. **Checkout moved to a minimal Stripe flow** with no blocking third-party tags
+   until after payment confirmation.
+
+The design system carried the visual consistency — the same tokens and components
+used in marketing pages powered the store, so accessibility fixes landed once.
+
+```ts
+const product = await getProduct(sku, {
+  next: { tags: [`product:${sku}`], revalidate: 300 },
+});
+```
+
+<Callout type="note">
+  Tag-based revalidation meant a price change invalidated exactly one product
+  page — not the entire catalog cache.
+</Callout>
+
+## Stack
+
+- **React** and TypeScript for storefront components
+- **Stripe** for payments with a tokenized, PCI-friendly checkout
+- **Edge caching** with tag-based revalidation for catalog freshness
+- **Playwright** coverage for the purchase path
+
+## Results
+
+- Largest Contentful Paint improved from **4.1s to 1.3s** on mid-tier mobile
+- Conversion rate rose **18%** in the first month after launch
+- Merchandisers shipped campaign pages in hours with no engineering deploy
