@@ -4,15 +4,17 @@ import { useEffect } from "react";
 
 export function RevealObserver() {
   useEffect(() => {
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    if (
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches ||
+      typeof IntersectionObserver === "undefined"
+    ) {
+      return;
+    }
 
     const elements = document.querySelectorAll<HTMLElement>("[data-reveal]");
-    if (elements.length === 0) return;
-
     const hidden: Element[] = [];
     for (const el of elements) {
       if (el.getBoundingClientRect().top >= window.innerHeight) {
-        el.classList.add("reveal-init");
         hidden.push(el);
       }
     }
@@ -29,7 +31,10 @@ export function RevealObserver() {
       },
       { threshold: 0, rootMargin: "0px 0px -8% 0px" },
     );
-    for (const el of hidden) observer.observe(el);
+    for (const el of hidden) {
+      el.classList.add("reveal-init");
+      observer.observe(el);
+    }
     return () => observer.disconnect();
   }, []);
 

@@ -72,6 +72,14 @@ export default async function ProjectsPage({
           ))}
         </nav>
 
+        <p className="sr-only" role="status">
+          {visible.length === 0
+            ? `No case studies match ${activeTag}.`
+            : activeTag
+              ? `Showing ${visible.length} of ${projects.length} case studies tagged ${activeTag}.`
+              : `Showing all ${projects.length} case studies.`}
+        </p>
+
         {visible.length > 0 ? (
           <Stagger
             as="ul"
