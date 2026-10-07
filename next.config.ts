@@ -3,7 +3,9 @@ import createMDX from "@next/mdx";
 import type { NextConfig } from "next";
 
 const withBundleAnalyzer = bundleAnalyzer({
-  enabled: process.env.ANALYZE === "true",
+  enabled:
+    process.env.ANALYZE === "true" ||
+    process.argv.includes("--webpack"),
   openAnalyzer: false,
 });
 

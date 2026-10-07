@@ -4,6 +4,8 @@ import { getProject } from "@/lib/projects";
 
 export const alt = "Case study preview";
 
+export const dynamic = "force-static";
+
 export const size = {
   width: 1200,
   height: 630,
