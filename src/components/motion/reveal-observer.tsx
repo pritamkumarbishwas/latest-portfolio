@@ -4,6 +4,8 @@ import { useEffect } from "react";
 
 export function RevealObserver() {
   useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
     const elements = document.querySelectorAll<HTMLElement>("[data-reveal]");
     if (elements.length === 0) return;
 

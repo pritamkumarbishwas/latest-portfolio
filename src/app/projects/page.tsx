@@ -17,9 +17,9 @@ export const metadata: Metadata = pageMetadata({
 
 function chipClass(active: boolean) {
   return cn(
-    "rounded-full border border-border px-3 py-1 text-sm text-muted-foreground transition-colors hover:border-accent-text hover:text-accent-text",
+    "rounded-full border border-border-strong px-3 py-1 text-sm text-muted-foreground transition-colors hover:border-accent-text hover:text-accent-text",
     active &&
-      "border-accent bg-accent text-accent-foreground hover:border-accent-hover hover:text-accent-foreground",
+      "border-accent-hover bg-accent text-accent-foreground hover:border-accent-hover hover:text-accent-foreground",
   );
 }
 

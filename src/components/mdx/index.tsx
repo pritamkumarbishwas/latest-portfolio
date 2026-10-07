@@ -89,7 +89,12 @@ export const mdxComponents: MDXComponents = {
     />
   ),
   pre: ({ children }) => (
-    <pre className="not-prose my-6 overflow-x-auto rounded-xl border border-border bg-muted p-4 font-mono text-sm leading-relaxed">
+    <pre
+      tabIndex={0}
+      role="region"
+      aria-label="Code sample"
+      className="not-prose my-6 overflow-x-auto rounded-xl border border-border bg-muted p-4 font-mono text-sm leading-relaxed"
+    >
       {children}
     </pre>
   ),

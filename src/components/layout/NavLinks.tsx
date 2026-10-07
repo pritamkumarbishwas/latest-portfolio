@@ -51,8 +51,8 @@ export function NavLinks({ links }: { links: readonly NavLink[] }) {
     href.startsWith("#") && pathname !== "/" ? `/${href}` : href;
 
   return (
-    <nav aria-label="Main">
-      <ul className="hidden items-center gap-6 md:flex">
+    <nav aria-label="Main" className="hidden md:block">
+      <ul className="flex items-center gap-6">
         {links.map((link) => {
           const isHash = link.href.startsWith("#");
           const isActive = isHash

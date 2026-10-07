@@ -28,12 +28,32 @@ export function MobileMenu({ links }: { links: readonly NavLink[] }) {
         !panelRef.current?.contains(target) &&
         !triggerRef.current?.contains(target)
       ) {
+        const focusWasInside =
+          panelRef.current?.contains(document.activeElement) ?? false;
         setOpen(false);
+        if (focusWasInside) {
+          triggerRef.current?.focus();
+        }
       }
     };
 
     document.addEventListener("pointerdown", onPointerDown);
     return () => document.removeEventListener("pointerdown", onPointerDown);
+  }, [open]);
+
+  useEffect(() => {
+    if (!open) {
+      return;
+    }
+
+    const query = window.matchMedia("(min-width: 768px)");
+    const onChange = (event: MediaQueryListEvent) => {
+      if (event.matches) {
+        setOpen(false);
+      }
+    };
+    query.addEventListener("change", onChange);
+    return () => query.removeEventListener("change", onChange);
   }, [open]);
 
   useEffect(() => {
@@ -83,12 +103,27 @@ export function MobileMenu({ links }: { links: readonly NavLink[] }) {
     return () => document.removeEventListener("keydown", onKeyDown);
   }, [open]);
 
+  const onNavigate = (href: string) => {
+    setOpen(false);
+
+    if (href.startsWith("#")) {
+      const target = document.getElementById(href.slice(1));
+      if (target) {
+        target.setAttribute("tabindex", "-1");
+        target.focus({ preventScroll: true });
+        return;
+      }
+    }
+
+    triggerRef.current?.focus();
+  };
+
   return (
     <>
       <button
         ref={triggerRef}
         type="button"
-        className="inline-flex size-9 items-center justify-center rounded-full border border-border text-muted-foreground transition-colors hover:border-accent-text hover:text-accent-text md:hidden"
+        className="inline-flex size-9 items-center justify-center rounded-full border border-border-strong text-muted-foreground transition-colors hover:border-accent-text hover:text-accent-text md:hidden"
         aria-expanded={open}
         aria-controls="mobile-menu"
         aria-label={open ? "Close menu" : "Open menu"}
@@ -113,7 +148,7 @@ export function MobileMenu({ links }: { links: readonly NavLink[] }) {
               <li key={link.href}>
                 <Link
                   href={hrefFor(link.href)}
-                  onClick={() => setOpen(false)}
+                  onClick={() => onNavigate(link.href)}
                   className="block rounded-lg px-3 py-2 text-base text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
                 >
                   {link.label}

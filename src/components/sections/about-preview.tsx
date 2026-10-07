@@ -22,7 +22,8 @@ export function AboutPreview() {
               <p key={paragraph}>{paragraph}</p>
             ))}
             <Link href="/about" className="text-sm">
-              Read the full story →
+              Read the full story{" "}
+              <span aria-hidden="true">→</span>
             </Link>
           </div>
 

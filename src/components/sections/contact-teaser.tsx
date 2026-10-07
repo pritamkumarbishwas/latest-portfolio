@@ -31,11 +31,8 @@ export function ContactTeaser() {
           >
             {site.email}
           </a>
-          <Link
-            href="/contact"
-            className="text-sm text-muted-foreground transition-colors hover:text-accent-text"
-          >
-            Or use the contact form →
+          <Link href="/contact" className="text-sm text-muted-foreground transition-colors hover:text-accent-text">
+            Or use the contact form <span aria-hidden="true">→</span>
           </Link>
         </div>
       </Container>

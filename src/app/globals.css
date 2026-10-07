@@ -13,7 +13,7 @@
   --card: #ffffff;
   --card-foreground: #18181b;
   --muted: #f4f4f5;
-  --muted-foreground: #71717a;
+  --muted-foreground: #6b6b73;
   --border: #e4e4e7;
   --border-strong: #8b8b93;
   --accent: #ff5a36;
@@ -93,6 +93,7 @@
 
   html {
     scroll-behavior: smooth;
+    scroll-padding-top: 5.5rem;
     -webkit-text-size-adjust: 100%;
   }
 
@@ -117,11 +118,8 @@
     line-height: var(--text-h1--line-height);
   }
 
-  section[id] {
-    scroll-margin-top: 5.5rem;
-  }
-
-  main:focus {
+  main:focus,
+  section[id]:focus {
     outline: none;
   }
 
