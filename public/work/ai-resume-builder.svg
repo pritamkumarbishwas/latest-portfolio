@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" width="1280" height="720">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#131316"/>
+      <stop offset="1" stop-color="#0a0a0b"/>
+    </linearGradient>
+  </defs>
+  <rect width="1280" height="720" fill="url(#bg)"/>
+  <circle cx="220" cy="140" r="240" fill="#ff5a36" opacity="0.16"/>
+  <g stroke="#27272a" stroke-width="1">
+    <line x1="0" y1="540" x2="1280" y2="540"/>
+    <line x1="0" y1="420" x2="1280" y2="420"/>
+    <line x1="0" y1="300" x2="1280" y2="300"/>
+  </g>
+  <g fill="#1c1c20" stroke="#3f3f46" stroke-width="2">
+    <rect x="320" y="160" width="360" height="420" rx="16"/>
+    <rect x="740" y="220" width="260" height="180" rx="16"/>
+    <rect x="740" y="430" width="260" height="150" rx="16"/>
+  </g>
+  <g stroke="#3f3f46" stroke-width="8" stroke-linecap="round">
+    <line x1="370" y1="240" x2="560" y2="240"/>
+    <line x1="370" y1="290" x2="620" y2="290"/>
+    <line x1="370" y1="340" x2="580" y2="340"/>
+    <line x1="370" y1="390" x2="610" y2="390"/>
+    <line x1="370" y1="440" x2="540" y2="440"/>
+    <line x1="370" y1="490" x2="600" y2="490"/>
+  </g>
+  <line x1="370" y1="290" x2="620" y2="290" stroke="#ff5a36" stroke-width="8" stroke-linecap="round"/>
+  <g fill="#ff5a36">
+    <path d="M 900 150 L 914 186 L 950 200 L 914 214 L 900 250 L 886 214 L 850 200 L 886 186 Z"/>
+    <path d="M 660 120 L 668 140 L 688 148 L 668 156 L 660 176 L 652 156 L 632 148 L 652 140 Z" opacity="0.7"/>
+  </g>
+  <g stroke="#27272a" stroke-width="8" stroke-linecap="round">
+    <line x1="770" y1="290" x2="940" y2="290"/>
+    <line x1="770" y1="340" x2="900" y2="340"/>
+    <line x1="770" y1="500" x2="940" y2="500"/>
+    <line x1="770" y1="540" x2="880" y2="540"/>
+  </g>
+  <text x="140" y="660" fill="#f4f4f5" font-family="ui-sans-serif, system-ui, sans-serif" font-size="48" font-weight="600" letter-spacing="1">AI Resume Builder</text>
+</svg>

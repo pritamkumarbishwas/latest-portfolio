@@ -86,7 +86,7 @@ export const tagline: string = (() => {
 /** Every skill group, sourced from src/content/profile.json. */
 export const skills: readonly SkillGroup[] = profile.skills;
 
-const HOME_SKILL_GROUPS = 3;
+const HOME_SKILL_GROUPS = 4;
 const HOME_SKILLS_PER_GROUP = 5;
 
 export const aboutPreview: AboutPreviewContent = {
