@@ -12,7 +12,7 @@ export function ProjectCard({
   preload?: boolean;
 }) {
   return (
-    <article className="flex h-full flex-col overflow-hidden rounded-xl border border-border bg-card motion-safe:duration-200 motion-safe:transition-transform motion-safe:hover:-translate-y-1">
+    <article className="relative flex h-full flex-col overflow-hidden rounded-xl border border-border bg-card motion-safe:duration-200 motion-safe:transition-transform motion-safe:hover:-translate-y-1">
       <Image
         src={project.cover}
         alt=""
