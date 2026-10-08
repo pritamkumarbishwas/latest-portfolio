@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { site } from "@/config/site";
+import { SOCIAL_LINKS } from "@/lib/constants";
 import { pageMetadata } from "@/lib/seo";
 import { ContactForm } from "@/components/contact-form";
 import { Container } from "@/components/ui/container";
@@ -48,6 +49,24 @@ export default function ContactPage() {
             <dd>{site.location}</dd>
           </div>
         </dl>
+
+        <nav aria-label="Social profiles" className="mt-4">
+          <ul className="flex flex-wrap gap-x-6 gap-y-2 text-sm text-muted-foreground">
+            {SOCIAL_LINKS.map((social) => (
+              <li key={social.label}>
+                <a
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="transition-colors hover:text-accent-text"
+                >
+                  {social.label}
+                  <span className="sr-only"> (opens in new tab)</span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </nav>
 
         <div className="mt-10 max-w-2xl">
           <ContactForm />

@@ -136,11 +136,23 @@ export default function AboutPage() {
         </div>
         <ul className="mt-8 max-w-2xl space-y-3 text-sm leading-relaxed text-muted-foreground md:text-base">
           {achievements.map((achievement) => (
-            <li key={achievement} className="flex gap-3">
+            <li key={achievement.text} className="flex gap-3">
               <span aria-hidden="true" className="text-accent-text">
                 →
               </span>
-              <span>{achievement}</span>
+              {achievement.href ? (
+                <a
+                  href={achievement.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="underline-offset-4 transition-colors hover:text-accent-text hover:underline"
+                >
+                  {achievement.text}
+                  <span className="sr-only"> (opens in new tab)</span>
+                </a>
+              ) : (
+                <span>{achievement.text}</span>
+              )}
             </li>
           ))}
         </ul>

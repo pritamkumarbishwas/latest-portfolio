@@ -64,7 +64,7 @@ export type EducationItem = {
 };
 
 export const hero: HeroContent = {
-  badge: "Available for new projects",
+  badge: "Open to the right opportunity",
   secondaryCta: {
     label: "View work",
     href: "#work",
@@ -77,11 +77,8 @@ export const experience: readonly ExperienceItem[] = profile.experience;
 /** Professional summary, sourced from src/content/profile.json. */
 export const summary: string = profile.summary;
 
-/** Opening sentence of the summary, used as the home hero tagline. */
-export const tagline: string = (() => {
-  const [first = summary] = summary.split(". ");
-  return first.endsWith(".") ? first : `${first}.`;
-})();
+/** Full professional summary, shown as the home hero tagline. */
+export const tagline: string = summary;
 
 /** Every skill group, sourced from src/content/profile.json. */
 export const skills: readonly SkillGroup[] = profile.skills;
@@ -117,5 +114,10 @@ export const certifications: readonly Certification[] = profile.certifications;
 /** Education history, sourced from src/content/profile.json. */
 export const education: readonly EducationItem[] = profile.education;
 
+export type AchievementItem = {
+  readonly text: string;
+  readonly href?: string;
+};
+
 /** Achievements, sourced from src/content/profile.json. */
-export const achievements: readonly string[] = profile.achievements;
+export const achievements: readonly AchievementItem[] = profile.achievements;
