@@ -1,3 +1,5 @@
+import profile from "@/content/profile.json";
+
 export type NavLink = {
   readonly href: string;
   readonly label: string;
@@ -14,8 +16,4 @@ export const NAV_LINKS: readonly NavLink[] = [
   { href: "#contact", label: "Contact" },
 ];
 
-export const SOCIAL_LINKS: readonly SocialLink[] = [
-  { href: "https://github.com/", label: "GitHub" },
-  { href: "https://www.linkedin.com/", label: "LinkedIn" },
-  { href: "https://x.com/", label: "X" },
-];
+export const SOCIAL_LINKS: readonly SocialLink[] = profile.contact.links;

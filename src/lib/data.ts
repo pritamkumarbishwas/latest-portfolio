@@ -2,7 +2,6 @@ import profile from "@/content/profile.json";
 
 export type HeroContent = {
   readonly badge: string;
-  readonly valueProposition: string;
   readonly secondaryCta: {
     readonly label: string;
     readonly href: string;
@@ -66,8 +65,6 @@ export type EducationItem = {
 
 export const hero: HeroContent = {
   badge: "Available for new projects",
-  valueProposition:
-    "crafting fast, accessible products on the web — from database to pixel.",
   secondaryCta: {
     label: "View work",
     href: "#work",
@@ -79,6 +76,12 @@ export const experience: readonly ExperienceItem[] = profile.experience;
 
 /** Professional summary, sourced from src/content/profile.json. */
 export const summary: string = profile.summary;
+
+/** Opening sentence of the summary, used as the home hero tagline. */
+export const tagline: string = (() => {
+  const [first = summary] = summary.split(". ");
+  return first.endsWith(".") ? first : `${first}.`;
+})();
 
 /** Every skill group, sourced from src/content/profile.json. */
 export const skills: readonly SkillGroup[] = profile.skills;

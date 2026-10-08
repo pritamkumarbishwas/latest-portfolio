@@ -1,4 +1,29 @@
 {
+  "name": "Pritam Kumar Bishwas",
+  "role": "Software Engineer",
+  "contact": {
+    "location": "Pune, Maharashtra",
+    "phone": "+91-8578805451",
+    "email": "pritamkumarbishwas85@gmail.com",
+    "links": [
+      {
+        "label": "LinkedIn",
+        "href": "https://www.linkedin.com/in/pritam-kumar-bishwas-119916230/"
+      },
+      {
+        "label": "GitHub",
+        "href": "https://github.com/pritamkumarbishwas"
+      },
+      {
+        "label": "LeetCode",
+        "href": "https://leetcode.com/u/pritamkumarbishwas85"
+      },
+      {
+        "label": "GeeksforGeeks",
+        "href": "https://www.geeksforgeeks.org/user/pritamkumarov"
+      }
+    ]
+  },
   "summary": "Software Engineer with 2+ years of experience building scalable web applications with React.js, Next.js, Vue.js, Node.js, Express.js, and TypeScript. Experienced in REST APIs, authentication, payments, and database-driven features, with a record of debugging production issues on live fintech and e-learning platforms.",
   "experience": [
     {
@@ -161,7 +186,7 @@
   ],
   "photo": {
     "src": "/about/portrait.svg",
-    "alt": "Portrait of [NAME]"
+    "alt": "Portrait of Pritam Kumar Bishwas"
   },
   "story": [
     "I’m a software engineer with 2+ years of experience building scalable web applications. I work across the stack — React.js, Next.js, and Vue.js on the front end, Node.js, Express.js, and TypeScript behind them — with a focus on REST APIs, authentication, payments, and database-driven features.",

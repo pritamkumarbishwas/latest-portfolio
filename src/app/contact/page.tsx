@@ -31,6 +31,24 @@ export default function ContactPage() {
           — either way, I reply within a day.
         </p>
 
+        <dl className="mt-6 flex flex-wrap gap-x-8 gap-y-2 text-sm text-muted-foreground">
+          <div className="flex gap-2">
+            <dt className="sr-only">Phone</dt>
+            <dd>
+              <a
+                href={`tel:${site.phone.replace(/-/g, "")}`}
+                className="transition-colors hover:text-accent-text"
+              >
+                {site.phone}
+              </a>
+            </dd>
+          </div>
+          <div className="flex gap-2">
+            <dt className="sr-only">Location</dt>
+            <dd>{site.location}</dd>
+          </div>
+        </dl>
+
         <div className="mt-10 max-w-2xl">
           <ContactForm />
         </div>

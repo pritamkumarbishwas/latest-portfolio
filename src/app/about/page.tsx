@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { Download } from "lucide-react";
+import { site } from "@/config/site";
 import { aboutPage, achievements, certifications, education, skills } from "@/lib/data";
 import { pageMetadata } from "@/lib/seo";
 import { buttonVariants } from "@/components/ui/button";
@@ -11,8 +12,7 @@ import { TagList } from "@/components/ui/tag-list";
 
 export const metadata: Metadata = pageMetadata({
   title: "About",
-  description:
-    "The story, values, and skills behind [NAME]’s full-stack work.",
+  description: `The story, values, and skills behind ${site.name}’s full-stack work.`,
   path: "/about",
 });
 

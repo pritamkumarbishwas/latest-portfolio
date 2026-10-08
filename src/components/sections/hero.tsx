@@ -2,7 +2,7 @@ import type { CSSProperties } from "react";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { site } from "@/config/site";
-import { hero } from "@/lib/data";
+import { hero, tagline } from "@/lib/data";
 import { Container } from "@/components/ui/container";
 import { buttonVariants } from "@/components/ui/button";
 
@@ -40,11 +40,16 @@ export function Hero() {
 
         <div className="hero-reveal mt-6" style={reveal(0.16)}>
           <p className="max-w-2xl text-lg leading-relaxed text-muted-foreground md:text-xl">
-            A{" "}
-            <span className="font-serif italic text-foreground">
-              {site.role}
-            </span>{" "}
-            {hero.valueProposition}
+            {tagline.startsWith(site.role) ? (
+              <>
+                <span className="font-serif italic text-foreground">
+                  {site.role}
+                </span>{" "}
+                {tagline.slice(site.role.length).trimStart()}
+              </>
+            ) : (
+              tagline
+            )}
           </p>
         </div>
 
