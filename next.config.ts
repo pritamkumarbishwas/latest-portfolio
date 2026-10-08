@@ -11,10 +11,6 @@ const withBundleAnalyzer = bundleAnalyzer({
 
 const nextConfig: NextConfig = {
   pageExtensions: ["js", "jsx", "ts", "tsx", "mdx"],
-  images: {
-    dangerouslyAllowSVG: true,
-    contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
-  },
 };
 
 const withMDX = createMDX({});
