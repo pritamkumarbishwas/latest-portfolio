@@ -123,6 +123,40 @@
         "Designed responsive user interfaces using Bootstrap 5, HTML5, CSS3, and JavaScript for consistent cross-device experiences.",
         "Integrated backend functionality with MySQL for structured data management and CRUD operations across application modules."
       ]
+    },
+    {
+      "title": "FortuneTalk Application",
+      "slug": "fortunetalk",
+      "summary": "Communication and astrology platform with call, chat, video, insights, e-commerce, and learning sections, powered by third-party integrations for OTP, payments, and video calls.",
+      "cover": "/work/fortunetalk.svg",
+      "period": "April 2024 – Aug 2024",
+      "links": [
+        {
+          "label": "FortuneTalk on Google Play",
+          "href": "https://play.google.com/store/apps/details?id=com.fortunetalk"
+        },
+        {
+          "label": "Astro FortuneTalk on Google Play",
+          "href": "https://play.google.com/store/apps/details?id=com.astrofortunetalk"
+        }
+      ],
+      "techStack": [
+        "HTML",
+        "CSS3",
+        "JavaScript",
+        "React.js",
+        "Material UI",
+        "Node.js",
+        "Express.js",
+        "Webpack",
+        "MongoDB",
+        "Redux"
+      ],
+      "highlights": [
+        "Engineered robust REST APIs (GET, POST, PATCH, PUT, DELETE) for the backend, enabling seamless data transactions and increasing data retrieval efficiency by 50%, significantly reducing user wait times.",
+        "Added features such as Call, Chat, Video Call, Free Insights, E-commerce, and Learning Section to enhance user engagement and functionality.",
+        "Integrated third-party APIs including SMS Gateway (OTP), astrology API (Free Insights), call (Knowlarity), Video Call (Zegocloud), and Razorpay (Payment gateway) to extend application capabilities."
+      ]
     }
   ],
   "photo": {

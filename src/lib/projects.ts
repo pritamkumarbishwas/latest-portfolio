@@ -6,8 +6,10 @@ export type Project = {
   readonly slug: string;
   readonly summary: string;
   readonly cover: string;
+  readonly period?: string;
   readonly liveUrl?: string;
   readonly repoUrl?: string;
+  readonly links?: readonly { readonly label: string; readonly href: string }[];
   readonly techStack: readonly string[];
   readonly highlights: readonly string[];
 };

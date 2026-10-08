@@ -67,6 +67,10 @@ export default async function CaseStudyPage({
           {project.title}
         </h1>
 
+        {project.period ? (
+          <p className="mt-2 text-sm text-muted-foreground">{project.period}</p>
+        ) : null}
+
         <p className="mt-4 max-w-2xl text-lg leading-relaxed text-muted-foreground md:text-xl">
           {project.summary}
         </p>
@@ -148,7 +152,25 @@ export default async function CaseStudyPage({
               </a>
             ) : null}
 
-            {!project.liveUrl && !project.repoUrl ? (
+            {project.links?.map((link) => (
+              <a
+                key={link.href}
+                href={link.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={
+                  project.liveUrl
+                    ? buttonVariants({ variant: "secondary" })
+                    : buttonVariants()
+                }
+              >
+                {link.label}
+                <ArrowUpRight className="size-4" aria-hidden="true" />
+                <span className="sr-only"> (opens in new tab)</span>
+              </a>
+            ))}
+
+            {!project.liveUrl && !project.repoUrl && !project.links?.length ? (
               <p className="text-sm text-muted-foreground">
                 Available on request.
               </p>

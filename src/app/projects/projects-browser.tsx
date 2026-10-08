@@ -64,7 +64,7 @@ export function ProjectsView({
       {visible.length > 0 ? (
         <Stagger
           as="ul"
-          className="mt-12 grid gap-8 md:grid-cols-2 lg:grid-cols-3"
+          className="mt-12 grid gap-8 md:grid-cols-2"
         >
           {visible.map((project) => (
             <StaggerItem as="li" key={project.slug}>
