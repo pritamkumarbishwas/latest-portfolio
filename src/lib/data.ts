@@ -86,11 +86,17 @@ export const tagline: string = (() => {
 /** Every skill group, sourced from src/content/profile.json. */
 export const skills: readonly SkillGroup[] = profile.skills;
 
-const HOME_SKILL_GROUPS = 4;
+const HOME_SKILL_GROUPS = 3;
+const HOME_SKILLS_PER_GROUP = 5;
 
 export const aboutPreview: AboutPreviewContent = {
-  bio: [summary],
-  skills: skills.slice(0, HOME_SKILL_GROUPS),
+  bio: [profile.summaryShort],
+  skills: skills
+    .slice(0, HOME_SKILL_GROUPS)
+    .map((group) => ({
+      category: group.category,
+      skills: group.skills.slice(0, HOME_SKILLS_PER_GROUP),
+    })),
 };
 
 export const contactTeaser: ContactTeaserContent = {

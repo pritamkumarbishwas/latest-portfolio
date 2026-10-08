@@ -25,6 +25,7 @@
     ]
   },
   "summary": "Software Engineer with 2+ years of experience building scalable web applications with React.js, Next.js, Vue.js, Node.js, Express.js, and TypeScript. Experienced in REST APIs, authentication, payments, and database-driven features, with a record of debugging production issues on live fintech and e-learning platforms.",
+  "summaryShort": "Software engineer with 2+ years of experience building scalable web apps with React.js, Next.js, Vue.js, Node.js, and TypeScript.",
   "experience": [
     {
       "company": "Definedge Solution Pvt. Ltd.",
@@ -115,7 +116,11 @@
       "summary": "Responsive Vue.js frontend with reusable components, REST API integration, search, filtering, and personalized content.",
       "cover": "/work/momentify.svg",
       "liveUrl": "https://momentify.definedgesecurities.com/",
-      "techStack": ["Vue.js", "JavaScript", "Tailwind CSS"],
+      "techStack": [
+        "Vue.js",
+        "JavaScript",
+        "Tailwind CSS"
+      ],
       "highlights": [
         "Developed a responsive frontend application using Vue.js, JavaScript, and Tailwind CSS with reusable components and responsive layouts.",
         "Implemented modular Vue.js components and state management to support scalable feature development and maintainable application architecture.",
@@ -129,7 +134,11 @@
       "summary": "Trading interface presenting market data, trading signals, and portfolio information through interactive dashboards.",
       "cover": "/work/algo-trader.svg",
       "liveUrl": "https://algostra.definedgesecurities.com/",
-      "techStack": ["Vue.js", "JavaScript", "Tailwind CSS"],
+      "techStack": [
+        "Vue.js",
+        "JavaScript",
+        "Tailwind CSS"
+      ],
       "highlights": [
         "Developed a responsive trading interface using Vue.js, JavaScript, and Tailwind CSS for presenting market data, trading signals, and portfolio information.",
         "Built interactive dashboards and reusable components to display real-time market data and trading-related insights.",
@@ -141,7 +150,12 @@
       "slug": "napuf",
       "summary": "Web application with authentication, product management, shopping cart, and secure server-side form handling.",
       "cover": "/work/napuf.svg",
-      "techStack": ["PHP", "CodeIgniter", "MySQL", "Bootstrap"],
+      "techStack": [
+        "PHP",
+        "CodeIgniter",
+        "MySQL",
+        "Bootstrap"
+      ],
       "highlights": [
         "Developed web application features using PHP, CodeIgniter, MySQL, and Bootstrap, including authentication, product management, and shopping cart functionality.",
         "Implemented secure authentication and form protection using CSRF tokens, password hashing, session management, and server-side validation.",
@@ -209,7 +223,14 @@
   "skills": [
     {
       "category": "Languages",
-      "skills": ["JavaScript (ES6+)", "TypeScript", "Python", "SQL", "HTML5", "CSS3"]
+      "skills": [
+        "JavaScript (ES6+)",
+        "TypeScript",
+        "Python",
+        "SQL",
+        "HTML5",
+        "CSS3"
+      ]
     },
     {
       "category": "Frontend",
@@ -237,7 +258,11 @@
     },
     {
       "category": "Databases",
-      "skills": ["MySQL (SQL)", "MongoDB (NoSQL)", "PostgreSQL"]
+      "skills": [
+        "MySQL (SQL)",
+        "MongoDB (NoSQL)",
+        "PostgreSQL"
+      ]
     },
     {
       "category": "Security",
@@ -250,7 +275,13 @@
     },
     {
       "category": "Tools",
-      "skills": ["Git", "GitHub", "Postman", "Vite", "Command Line"]
+      "skills": [
+        "Git",
+        "GitHub",
+        "Postman",
+        "Vite",
+        "Command Line"
+      ]
     },
     {
       "category": "Practices",
