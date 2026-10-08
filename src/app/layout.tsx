@@ -62,6 +62,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <body
         id="top"
         className="flex min-h-dvh flex-col bg-background font-sans text-foreground antialiased"
+        suppressHydrationWarning
       >
         <ThemeProvider
           attribute="class"
