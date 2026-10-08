@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { Download } from "lucide-react";
-import { aboutPage, aboutPreview } from "@/lib/data";
+import { aboutPage, skills } from "@/lib/data";
 import { pageMetadata } from "@/lib/seo";
 import { buttonVariants } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -63,8 +63,8 @@ export default function AboutPage() {
             The <span className="font-serif italic">toolkit</span>
           </SectionHeading>
         </div>
-        <div className="mt-8 grid gap-8 sm:grid-cols-3">
-          {aboutPreview.skills.map((group) => (
+        <div className="mt-8 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+          {skills.map((group) => (
             <div key={group.category}>
               <h3 className="text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">
                 {group.category}

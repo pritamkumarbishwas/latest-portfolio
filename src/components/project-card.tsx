@@ -34,12 +34,6 @@ export function ProjectCard({
               {project.title}
             </Link>
           </h3>
-          <time
-            dateTime={project.date.toISOString().slice(0, 10)}
-            className="shrink-0 text-sm text-muted-foreground"
-          >
-            {project.date.getFullYear()}
-          </time>
         </div>
 
         <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
@@ -47,7 +41,7 @@ export function ProjectCard({
         </p>
 
         <ul className="mt-4 flex flex-wrap gap-2">
-          {project.tags.map((tag) => (
+          {project.techStack.map((tag) => (
             <li key={tag}>
               <Badge>{tag}</Badge>
             </li>

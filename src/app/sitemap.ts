@@ -14,7 +14,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const projects: MetadataRoute.Sitemap = getProjects().map((project) => ({
     url: `${home}/projects/${project.slug}`,
-    lastModified: project.date,
     changeFrequency: "yearly",
     priority: 0.8,
   }));

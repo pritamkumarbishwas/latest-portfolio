@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { site } from "@/config/site";
 import { SOCIAL_LINKS } from "@/lib/constants";
-import { aboutPreview } from "@/lib/data";
+import { skills, summary } from "@/lib/data";
 import { JsonLd } from "@/components/json-ld";
 import { AboutPreview } from "@/components/sections/about-preview";
 import { ContactTeaser } from "@/components/sections/contact-teaser";
@@ -18,13 +18,11 @@ const personJsonLd = {
   "@type": "Person",
   name: site.name,
   jobTitle: site.role,
-  description: site.description,
+  description: summary,
   url: site.url,
   email: `mailto:${site.email}`,
   sameAs: SOCIAL_LINKS.map((link) => link.href),
-  knowsAbout: [
-    ...new Set(aboutPreview.skills.flatMap((group) => group.skills)),
-  ],
+  knowsAbout: [...new Set(skills.flatMap((group) => group.skills))],
 };
 
 export default function Home() {

@@ -1,11 +1,11 @@
-import { getFeaturedProjects } from "@/lib/projects";
+import { getProjects } from "@/lib/projects";
 import { Stagger, StaggerItem } from "@/components/motion";
 import { Container } from "@/components/ui/container";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { ProjectCard } from "@/components/project-card";
 
 export function FeaturedProjects() {
-  const projects = getFeaturedProjects().slice(0, 3);
+  const projects = getProjects().slice(0, 3);
 
   return (
     <section id="work" aria-labelledby="work-heading">

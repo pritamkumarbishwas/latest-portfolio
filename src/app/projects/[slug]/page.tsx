@@ -3,7 +3,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft, ArrowUpRight } from "lucide-react";
-import { mdxComponents } from "@/components/mdx";
 import { Badge } from "@/components/ui/badge";
 import { buttonVariants } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
@@ -30,7 +29,6 @@ export async function generateMetadata({
     description: project.summary,
     path: `/projects/${slug}`,
     type: "article",
-    publishedTime: project.date,
   });
 }
 
@@ -40,10 +38,6 @@ export default async function CaseStudyPage({
   const { slug } = await params;
   const project = getProject(slug);
   if (!project) notFound();
-
-  const { default: CaseStudy } = await import(
-    `@/content/projects/${slug}.mdx`
-  );
 
   const projects = getProjects();
   const index = projects.findIndex((item) => item.slug === slug);
@@ -77,36 +71,8 @@ export default async function CaseStudyPage({
           {project.summary}
         </p>
 
-        <dl className="mt-8 flex flex-wrap gap-x-10 gap-y-5">
-          <div>
-            <dt className="text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">
-              Role
-            </dt>
-            <dd className="mt-1.5 text-sm font-medium">{project.role}</dd>
-          </div>
-          <div>
-            <dt className="text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">
-              Duration
-            </dt>
-            <dd className="mt-1.5 text-sm font-medium">{project.duration}</dd>
-          </div>
-          <div>
-            <dt className="text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">
-              Date
-            </dt>
-            <dd className="mt-1.5 text-sm font-medium">
-              <time dateTime={project.date.toISOString().slice(0, 10)}>
-                {project.date.toLocaleDateString("en-US", {
-                  year: "numeric",
-                  month: "long",
-                })}
-              </time>
-            </dd>
-          </div>
-        </dl>
-
-        <ul className="mt-6 flex flex-wrap gap-2">
-          {project.tags.map((tag) => (
+        <ul className="mt-8 flex flex-wrap gap-2">
+          {project.techStack.map((tag) => (
             <li key={tag}>
               <Badge>{tag}</Badge>
             </li>
@@ -126,9 +92,24 @@ export default async function CaseStudyPage({
       </Container>
 
       <Container>
-        <div className="prose prose-neutral dark:prose-invert prose-headings:font-display prose-headings:tracking-tight prose-headings:scroll-mt-24 prose-a:text-accent-text">
-          <CaseStudy components={mdxComponents} />
-        </div>
+        <section aria-labelledby="highlights-heading">
+          <h2
+            id="highlights-heading"
+            className="font-display tracking-tight"
+          >
+            Highlights
+          </h2>
+          <ul className="mt-6 max-w-3xl space-y-3 text-base leading-relaxed text-muted-foreground">
+            {project.highlights.map((highlight) => (
+              <li key={highlight} className="flex gap-3">
+                <span aria-hidden="true" className="text-accent-text">
+                  →
+                </span>
+                <span>{highlight}</span>
+              </li>
+            ))}
+          </ul>
+        </section>
       </Container>
 
       <Container className="pt-10">

@@ -20,6 +20,8 @@ test("case study detail page renders", async ({ page }) => {
 
   await expect(page).toHaveURL(/\/projects\/[^/?]+$/);
   await expect(page.locator("main h1")).toBeVisible();
-  await expect(page.locator("main dl dt").first()).toHaveText("Role");
+  await expect(
+    page.locator('main section[aria-labelledby="highlights-heading"] li').first(),
+  ).toBeVisible();
   await expect(page.locator('a[href="/projects"]')).toBeVisible();
 });

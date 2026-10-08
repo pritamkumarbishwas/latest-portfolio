@@ -6,7 +6,7 @@
         "http://localhost:4318/",
         "http://localhost:4318/about",
         "http://localhost:4318/projects",
-        "http://localhost:4318/projects/realtime-analytics",
+        "http://localhost:4318/projects/gurukul",
         "http://localhost:4318/contact"
       ],
       "numberOfRuns": 3

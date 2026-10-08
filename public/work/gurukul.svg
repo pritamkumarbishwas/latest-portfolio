@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" width="1280" height="720">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#131316"/>
+      <stop offset="1" stop-color="#0a0a0b"/>
+    </linearGradient>
+  </defs>
+  <rect width="1280" height="720" fill="url(#bg)"/>
+  <circle cx="1060" cy="140" r="240" fill="#ff5a36" opacity="0.16"/>
+  <g stroke="#27272a" stroke-width="1">
+    <line x1="0" y1="540" x2="1280" y2="540"/>
+    <line x1="0" y1="420" x2="1280" y2="420"/>
+    <line x1="0" y1="300" x2="1280" y2="300"/>
+  </g>
+  <g fill="#1c1c20" stroke="#3f3f46" stroke-width="2">
+    <rect x="140" y="240" width="300" height="200" rx="16"/>
+    <rect x="470" y="200" width="300" height="200" rx="16"/>
+    <rect x="800" y="260" width="300" height="200" rx="16"/>
+  </g>
+  <g fill="#ff5a36">
+    <path d="M 260 310 L 320 340 L 260 370 Z"/>
+    <path d="M 590 270 L 650 300 L 590 330 Z" opacity="0.75"/>
+    <path d="M 920 330 L 980 360 L 920 390 Z" opacity="0.5"/>
+  </g>
+  <g stroke="#27272a" stroke-width="8" stroke-linecap="round">
+    <line x1="170" y1="410" x2="360" y2="410"/>
+    <line x1="500" y1="370" x2="690" y2="370"/>
+    <line x1="830" y1="430" x2="1020" y2="430"/>
+  </g>
+  <text x="140" y="640" fill="#f4f4f5" font-family="ui-sans-serif, system-ui, sans-serif" font-size="56" font-weight="600" letter-spacing="1">Gurukul</text>
+</svg>

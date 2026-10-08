@@ -25,7 +25,7 @@ export function ProjectsView({
   activeTag: string | null;
 }) {
   const visible = activeTag
-    ? projects.filter((project) => project.tags.includes(activeTag))
+    ? projects.filter((project) => project.techStack.includes(activeTag))
     : projects;
 
   return (

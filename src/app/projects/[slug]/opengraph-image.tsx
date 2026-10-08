@@ -86,7 +86,7 @@ export default async function Image({
         </div>
 
         <div style={{ display: "flex", gap: 14 }}>
-          {project.tags.slice(0, 4).map((tag) => (
+          {project.techStack.slice(0, 4).map((tag) => (
             <div
               key={tag}
               style={{

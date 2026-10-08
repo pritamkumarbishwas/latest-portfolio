@@ -1,6 +1,7 @@
 import { experience } from "@/lib/data";
 import { Container } from "@/components/ui/container";
 import { SectionHeading } from "@/components/ui/section-heading";
+import { TagList } from "@/components/ui/tag-list";
 
 export function Experience() {
   return (
@@ -22,11 +23,30 @@ export function Experience() {
               <h3 className="mt-1 font-display tracking-tight">{item.role}</h3>
               <p className="mt-1 text-sm font-medium text-accent-text">
                 {item.company}
+                {item.location || item.mode ? (
+                  <span className="font-normal text-muted-foreground">
+                    {" · "}
+                    {[item.location, item.mode].filter(Boolean).join(" · ")}
+                  </span>
+                ) : null}
               </p>
 
-              <p className="mt-3 max-w-2xl text-sm leading-relaxed text-muted-foreground md:text-base">
-                {item.summary}
-              </p>
+              {item.summary ? (
+                <p className="mt-3 max-w-2xl text-sm leading-relaxed text-muted-foreground md:text-base">
+                  {item.summary}
+                </p>
+              ) : null}
+
+              {item.techStack?.length ? (
+                <div className="mt-4">
+                  <h4 className="text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">
+                    Tech Stack
+                  </h4>
+                  <div className="mt-2">
+                    <TagList items={item.techStack} />
+                  </div>
+                </div>
+              ) : null}
 
               <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
                 {item.highlights.map((highlight) => (

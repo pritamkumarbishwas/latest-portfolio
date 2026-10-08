@@ -15,7 +15,7 @@ export const metadata: Metadata = pageMetadata({
 
 export default function ProjectsPage() {
   const projects = getProjects();
-  const tags = [...new Set(projects.flatMap((project) => project.tags))].sort();
+  const tags = [...new Set(projects.flatMap((project) => project.techStack))].sort();
 
   return (
     <section aria-labelledby="projects-heading">

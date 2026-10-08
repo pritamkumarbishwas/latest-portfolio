@@ -1,0 +1,230 @@
+{
+  "summary": "Software Engineer with 2+ years of experience building scalable web applications with React.js, Next.js, Vue.js, Node.js, Express.js, and TypeScript. Experienced in REST APIs, authentication, payments, and database-driven features, with a record of debugging production issues on live fintech and e-learning platforms.",
+  "experience": [
+    {
+      "company": "Definedge Solution Pvt. Ltd.",
+      "role": "Software Engineer",
+      "period": "Feb 2025 – Present",
+      "location": "Pune, India",
+      "mode": "On-Site",
+      "highlights": [
+        "Built and maintained full-stack features for live fintech and e-learning platforms using React.js, Next.js, Vue.js, Node.js, Express.js, and MongoDB.",
+        "Developed reusable, responsive UI components with React.js, Next.js, Redux Toolkit, and Tailwind CSS, improving consistency across the platform.",
+        "Improved page load performance through code splitting, lazy loading, and API response caching.",
+        "Designed and optimized REST APIs with Node.js and Express.js, improving response times through database query optimization.",
+        "Troubleshot and resolved production issues, collaborating with cross-functional teams to deliver features from requirements to release."
+      ]
+    },
+    {
+      "company": "Freelance / Self-Study",
+      "role": "Full-Stack Developer",
+      "period": "Jan 2023 – Jan 2025",
+      "mode": "Remote",
+      "techStack": [
+        "HTML5",
+        "CSS",
+        "JavaScript",
+        "Bootstrap",
+        "Webpack",
+        "Material-UI",
+        "React.js",
+        "Node.js",
+        "Express.js",
+        "MongoDB",
+        "Redux"
+      ],
+      "highlights": [
+        "Managed the backend and frontend (Admin Panel) of the FortuneTalk application, ensuring robust and efficient server-side operations.",
+        "Developed and maintained RESTful APIs using Node.js, Express.js, and MongoDB to support frontend functionalities.",
+        "Implemented new features and enhanced existing ones, improving user engagement and satisfaction by 30%.",
+        "Collaborated with frontend developers to integrate user-facing elements with server-side logic using React.js, Redux, Webpack, and Material-UI.",
+        "Optimized database queries and maintained data integrity with MongoDB, improving data retrieval speed by 15%.",
+        "Used Git for version control and managed code repositories.",
+        "Participated in Agile development processes, including sprint planning, daily stand-ups, and retrospectives."
+      ]
+    },
+    {
+      "company": "V2web Hosting Pvt. Ltd.",
+      "role": "Backend Developer",
+      "period": "May 2022 – Jan 2023",
+      "location": "Noida, India",
+      "mode": "On-Site",
+      "highlights": [
+        "Maintained and enhanced web applications using PHP, Node.js, Express.js, MongoDB, and MySQL.",
+        "Fixed critical bugs and refactored existing code, improving code efficiency by 30%.",
+        "Addressed fake bots and spam posts, reducing spam and fraudulent activity by 20%.",
+        "Integrated Google reCAPTCHA to strengthen website security, decreasing bot-generated traffic by 25%."
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "title": "Gurukul",
+      "slug": "gurukul",
+      "summary": "Full-stack e-learning platform covering course discovery, enrollment, online learning, books, videos, events, dashboards, payments, and secure content access.",
+      "cover": "/work/gurukul.svg",
+      "liveUrl": "https://gurukul.definedgesecurities.com/",
+      "techStack": [
+        "Next.js",
+        "React.js",
+        "TypeScript",
+        "Node.js",
+        "Express.js",
+        "MySQL",
+        "Redux Toolkit"
+      ],
+      "highlights": [
+        "Developed a full-stack e-learning platform supporting course discovery, enrollment, online learning, books, videos, events, user dashboards, and secure content access.",
+        "Built responsive and reusable interfaces using Next.js, React.js, TypeScript, and Tailwind CSS for course listings, learning modules, dashboards, cart, and account management.",
+        "Implemented Server-Side Rendering (SSR) and Static Site Generation (SSG) with Next.js to improve page performance, SEO, and content discoverability.",
+        "Implemented SEO best practices including dynamic metadata, semantic HTML, optimized page structure, and search-engine-friendly course and content pages.",
+        "Developed RESTful APIs using Node.js and Express.js for authentication, course management, cart and order processing, payments, certificates, and role-based access control.",
+        "Integrated MySQL for managing users, courses, orders, certificates, and learning content, with optimized queries and efficient database operations.",
+        "Implemented payment workflows, webhooks, course access validation, and cron jobs for automated course expiry and access management.",
+        "Used Redux Toolkit and RTK Query for centralized state management, API caching, data synchronization, and frontend performance optimization."
+      ]
+    },
+    {
+      "title": "Momentify",
+      "slug": "momentify",
+      "summary": "Responsive Vue.js frontend with reusable components, REST API integration, search, filtering, and personalized content.",
+      "cover": "/work/momentify.svg",
+      "liveUrl": "https://momentify.definedgesecurities.com/",
+      "techStack": ["Vue.js", "JavaScript", "Tailwind CSS"],
+      "highlights": [
+        "Developed a responsive frontend application using Vue.js, JavaScript, and Tailwind CSS with reusable components and responsive layouts.",
+        "Implemented modular Vue.js components and state management to support scalable feature development and maintainable application architecture.",
+        "Integrated REST APIs for dynamic data retrieval and implemented search, filtering, and personalized content functionality.",
+        "Optimized frontend performance through efficient component rendering, lifecycle management, API handling, and reusable component architecture."
+      ]
+    },
+    {
+      "title": "Algo Trader",
+      "slug": "algo-trader",
+      "summary": "Trading interface presenting market data, trading signals, and portfolio information through interactive dashboards.",
+      "cover": "/work/algo-trader.svg",
+      "liveUrl": "https://algostra.definedgesecurities.com/",
+      "techStack": ["Vue.js", "JavaScript", "Tailwind CSS"],
+      "highlights": [
+        "Developed a responsive trading interface using Vue.js, JavaScript, and Tailwind CSS for presenting market data, trading signals, and portfolio information.",
+        "Built interactive dashboards and reusable components to display real-time market data and trading-related insights.",
+        "Integrated RESTful APIs for retrieving market data and supporting order execution and portfolio management workflows."
+      ]
+    },
+    {
+      "title": "Napuf",
+      "slug": "napuf",
+      "summary": "Web application with authentication, product management, shopping cart, and secure server-side form handling.",
+      "cover": "/work/napuf.svg",
+      "techStack": ["PHP", "CodeIgniter", "MySQL", "Bootstrap"],
+      "highlights": [
+        "Developed web application features using PHP, CodeIgniter, MySQL, and Bootstrap, including authentication, product management, and shopping cart functionality.",
+        "Implemented secure authentication and form protection using CSRF tokens, password hashing, session management, and server-side validation.",
+        "Designed responsive user interfaces using Bootstrap 5, HTML5, CSS3, and JavaScript for consistent cross-device experiences.",
+        "Integrated backend functionality with MySQL for structured data management and CRUD operations across application modules."
+      ]
+    }
+  ],
+  "photo": {
+    "src": "/about/portrait.svg",
+    "alt": "Portrait of [NAME]"
+  },
+  "story": [
+    "I’m a software engineer with 2+ years of experience building scalable web applications. I work across the stack — React.js, Next.js, and Vue.js on the front end, Node.js, Express.js, and TypeScript behind them — with a focus on REST APIs, authentication, payments, and database-driven features.",
+    "Much of that work has been on live fintech and e-learning platforms, debugging production issues and tuning API, query, and front-end performance. I care about the details that don’t show up in a screenshot: fast loads, sensible semantics, and code the next developer can read."
+  ],
+  "values": [
+    {
+      "title": "Accessible by default",
+      "body": "Semantic HTML first, ARIA where it earns its keep, and keyboard paths tested before the UI is called done."
+    },
+    {
+      "title": "Performance is a feature",
+      "body": "Budgets, profiles, and real devices — fast is a decision made on every commit, not a cleanup sprint."
+    },
+    {
+      "title": "Clarity over cleverness",
+      "body": "Code is read far more than it is written. I optimise for the next developer, including future me."
+    }
+  ],
+  "skills": [
+    {
+      "category": "Languages",
+      "skills": ["JavaScript (ES6+)", "TypeScript", "Python", "SQL", "HTML5", "CSS3"]
+    },
+    {
+      "category": "Frontend",
+      "skills": [
+        "React.js",
+        "Next.js",
+        "Vue.js",
+        "Redux Toolkit",
+        "RTK Query",
+        "Tailwind CSS",
+        "Responsive UI Design",
+        "UI Components"
+      ]
+    },
+    {
+      "category": "Backend",
+      "skills": [
+        "Node.js",
+        "Express.js",
+        "REST APIs",
+        "Asynchronous APIs",
+        "Webhooks",
+        "Cron Jobs"
+      ]
+    },
+    {
+      "category": "Databases",
+      "skills": ["MySQL (SQL)", "MongoDB (NoSQL)", "PostgreSQL"]
+    },
+    {
+      "category": "Security",
+      "skills": [
+        "JWT Authentication",
+        "Role-Based Access Control",
+        "CSRF Protection",
+        "Password Hashing"
+      ]
+    },
+    {
+      "category": "Tools",
+      "skills": ["Git", "GitHub", "Postman", "Vite", "Command Line"]
+    },
+    {
+      "category": "Practices",
+      "skills": [
+        "Agile / Scrum",
+        "Code Review",
+        "Git Branching Workflows",
+        "Merge Conflict Resolution"
+      ]
+    },
+    {
+      "category": "Core Concepts",
+      "skills": [
+        "Data Structures and Algorithms",
+        "Asynchronous State Management",
+        "Code Optimization",
+        "API Optimization",
+        "Application Optimization",
+        "Query Optimization",
+        "Performance Optimization (Code Splitting, Lazy Loading, Caching)"
+      ]
+    },
+    {
+      "category": "Familiar With",
+      "skills": [
+        "Redis",
+        "Docker",
+        "Jest",
+        "React Testing Library",
+        "CI/CD",
+        "Jenkins",
+        "MUI"
+      ]
+    }
+  ]
+}
