@@ -39,7 +39,7 @@ export type StaggerItemProps = {
 
 export function StaggerItem({ children, className, as: Tag = "div" }: StaggerItemProps) {
   return (
-    <Tag data-reveal className={cn("reveal-up", className)}>
+    <Tag data-reveal suppressHydrationWarning className={cn("reveal-up", className)}>
       {children}
     </Tag>
   );

@@ -11,6 +11,7 @@ export function SlideUp({ children, className, delay = 0 }: SlideUpProps) {
   return (
     <div
       data-reveal
+      suppressHydrationWarning
       className={cn("reveal-up", className)}
       style={
         delay > 0

@@ -11,6 +11,7 @@ export function FadeIn({ children, className, delay = 0 }: FadeInProps) {
   return (
     <div
       data-reveal
+      suppressHydrationWarning
       className={cn("reveal-fade", className)}
       style={
         delay > 0
