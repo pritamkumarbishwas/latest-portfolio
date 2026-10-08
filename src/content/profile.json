@@ -260,5 +260,33 @@
         "MUI"
       ]
     }
+  ],
+  "certifications": [
+    {
+      "title": "Meta Back-End Developer Professional Certificate",
+      "issuer": "Meta",
+      "platform": "Coursera",
+      "date": "May 2026",
+      "description": "Completed a 9-course professional certificate program focused on Python, Django, REST APIs, SQL, Version Control, Back-End Development, and Coding Interview Preparation."
+    },
+    {
+      "title": "Meta Full Stack Developer: Front-End & Back-End from Scratch",
+      "issuer": "Meta",
+      "platform": "Coursera",
+      "date": "Apr 2026",
+      "description": "Completed a 10-course specialization covering Front-End Development, JavaScript, Version Control, HTML/CSS, React, Python, Databases, Django, and APIs."
+    }
+  ],
+  "education": [
+    {
+      "institution": "Bhupendra Narayan Mandal University",
+      "period": "2017 – 2020",
+      "degree": "Bachelor of Computer Applications (BCA)",
+      "detail": "Percentage: 76.6%",
+      "location": "Purnea, Bihar"
+    }
+  ],
+  "achievements": [
+    "Coding Profiles: Solved 300+ problems on LeetCode, 200+ problems on GeeksforGeeks."
   ]
 }

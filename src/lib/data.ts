@@ -47,6 +47,23 @@ export type AboutPageContent = {
   }[];
 };
 
+export type Certification = {
+  readonly title: string;
+  readonly issuer: string;
+  readonly platform: string;
+  readonly date: string;
+  readonly url?: string;
+  readonly description: string;
+};
+
+export type EducationItem = {
+  readonly institution: string;
+  readonly period: string;
+  readonly degree: string;
+  readonly detail?: string;
+  readonly location?: string;
+};
+
 export const hero: HeroContent = {
   badge: "Available for new projects",
   valueProposition:
@@ -84,3 +101,12 @@ export const aboutPage: AboutPageContent = {
   story: profile.story,
   values: profile.values,
 };
+
+/** Certifications, sourced from src/content/profile.json. */
+export const certifications: readonly Certification[] = profile.certifications;
+
+/** Education history, sourced from src/content/profile.json. */
+export const education: readonly EducationItem[] = profile.education;
+
+/** Achievements, sourced from src/content/profile.json. */
+export const achievements: readonly string[] = profile.achievements;
