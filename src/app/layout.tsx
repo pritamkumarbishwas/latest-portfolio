@@ -6,6 +6,8 @@ import { Footer } from "@/components/layout/Footer";
 import { Header } from "@/components/layout/Header";
 import { ScrollProgress } from "@/components/layout/ScrollProgress";
 import { ThemeProvider } from "@/components/layout/ThemeProvider";
+import { ChatLauncher } from "@/components/chat/ChatLauncher";
+import { ChatProvider } from "@/components/chat/ChatProvider";
 import { RevealObserver } from "@/components/motion";
 import { RouteFocus } from "@/components/layout/RouteFocus";
 
@@ -28,6 +30,8 @@ const instrumentSerif = Instrument_Serif({
   variable: "--font-instrument-serif",
   display: "swap",
 });
+
+const chatEnabled = process.env.CHAT_ENABLED !== "false";
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
@@ -71,20 +75,23 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           enableSystem={false}
           disableTransitionOnChange
         >
-          <RouteFocus />
-          <RevealObserver />
-          <a
-            href="#main-content"
-            className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-lg focus:bg-accent focus:px-4 focus:py-2.5 focus:text-sm focus:font-medium focus:text-accent-foreground"
-          >
-            Skip to content
-          </a>
-          <Header />
-          <main id="main-content" tabIndex={-1} className="flex-1">
-            {children}
-          </main>
-          <Footer />
-          <ScrollProgress />
+          <ChatProvider>
+            <RouteFocus />
+            <RevealObserver />
+            <a
+              href="#main-content"
+              className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-lg focus:bg-accent focus:px-4 focus:py-2.5 focus:text-sm focus:font-medium focus:text-accent-foreground"
+            >
+              Skip to content
+            </a>
+            <Header />
+            <main id="main-content" tabIndex={-1} className="flex-1">
+              {children}
+            </main>
+            <Footer />
+            <ScrollProgress />
+            {chatEnabled ? <ChatLauncher /> : null}
+          </ChatProvider>
         </ThemeProvider>
       </body>
     </html>

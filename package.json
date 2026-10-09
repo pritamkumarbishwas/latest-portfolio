@@ -9,16 +9,24 @@
     "start": "next start",
     "lint": "eslint",
     "typecheck": "tsc --noEmit",
+    "prompt:report": "node --conditions=react-server --import tsx scripts/chat-prompt-report.ts",
+    "eval:chat": "node --import tsx scripts/eval-chat.ts",
     "test:e2e": "playwright test",
     "test:lighthouse": "lhci autorun"
   },
   "dependencies": {
+    "@ai-sdk/groq": "^4.0.59",
+    "@ai-sdk/openai": "^4.0.91",
+    "@ai-sdk/react": "^4.0.139",
     "@hookform/resolvers": "^5.9.1",
     "@mdx-js/loader": "^3.1.1",
     "@mdx-js/react": "^3.1.1",
     "@next/mdx": "^16.4.0",
     "@tailwindcss/typography": "^0.5.20",
     "@types/mdx": "^2.0.14",
+    "@upstash/ratelimit": "^2.2.0",
+    "@upstash/redis": "^1.39.0",
+    "ai": "^7.0.136",
     "clsx": "^2.1.1",
     "gray-matter": "^4.0.3",
     "lucide-react": "^1.52.0",
@@ -27,6 +35,8 @@
     "react": "19.2.8",
     "react-dom": "19.2.8",
     "react-hook-form": "^7.89.0",
+    "react-markdown": "^10.1.0",
+    "remark-gfm": "^4.0.1",
     "resend": "^6.32.1",
     "server-only": "^0.0.1",
     "tailwind-merge": "^3.7.0",
@@ -43,6 +53,7 @@
     "eslint": "^9",
     "eslint-config-next": "16.3.8",
     "tailwindcss": "^4",
+    "tsx": "^4.23.15",
     "typescript": "^5"
   }
 }
