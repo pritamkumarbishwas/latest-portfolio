@@ -95,6 +95,7 @@
     scroll-behavior: smooth;
     scroll-padding-top: 5.5rem;
     -webkit-text-size-adjust: 100%;
+    font-size: 17px;
   }
 
   body {
@@ -237,51 +238,51 @@
   transform: none;
 }
 
-.stagger > [data-reveal]:nth-child(1) {
+.stagger>[data-reveal]:nth-child(1) {
   --reveal-delay: var(--stagger-base, 0s);
 }
 
-.stagger > [data-reveal]:nth-child(2) {
+.stagger>[data-reveal]:nth-child(2) {
   --reveal-delay: calc(var(--stagger-base, 0s) + var(--stagger-step, 0.1s));
 }
 
-.stagger > [data-reveal]:nth-child(3) {
+.stagger>[data-reveal]:nth-child(3) {
   --reveal-delay: calc(var(--stagger-base, 0s) + var(--stagger-step, 0.1s) * 2);
 }
 
-.stagger > [data-reveal]:nth-child(4) {
+.stagger>[data-reveal]:nth-child(4) {
   --reveal-delay: calc(var(--stagger-base, 0s) + var(--stagger-step, 0.1s) * 3);
 }
 
-.stagger > [data-reveal]:nth-child(5) {
+.stagger>[data-reveal]:nth-child(5) {
   --reveal-delay: calc(var(--stagger-base, 0s) + var(--stagger-step, 0.1s) * 4);
 }
 
-.stagger > [data-reveal]:nth-child(6) {
+.stagger>[data-reveal]:nth-child(6) {
   --reveal-delay: calc(var(--stagger-base, 0s) + var(--stagger-step, 0.1s) * 5);
 }
 
-.stagger > [data-reveal]:nth-child(7) {
+.stagger>[data-reveal]:nth-child(7) {
   --reveal-delay: calc(var(--stagger-base, 0s) + var(--stagger-step, 0.1s) * 6);
 }
 
-.stagger > [data-reveal]:nth-child(8) {
+.stagger>[data-reveal]:nth-child(8) {
   --reveal-delay: calc(var(--stagger-base, 0s) + var(--stagger-step, 0.1s) * 7);
 }
 
-.stagger > [data-reveal]:nth-child(9) {
+.stagger>[data-reveal]:nth-child(9) {
   --reveal-delay: calc(var(--stagger-base, 0s) + var(--stagger-step, 0.1s) * 8);
 }
 
-.stagger > [data-reveal]:nth-child(10) {
+.stagger>[data-reveal]:nth-child(10) {
   --reveal-delay: calc(var(--stagger-base, 0s) + var(--stagger-step, 0.1s) * 9);
 }
 
-.stagger > [data-reveal]:nth-child(11) {
+.stagger>[data-reveal]:nth-child(11) {
   --reveal-delay: calc(var(--stagger-base, 0s) + var(--stagger-step, 0.1s) * 10);
 }
 
-.stagger > [data-reveal]:nth-child(12) {
+.stagger>[data-reveal]:nth-child(12) {
   --reveal-delay: calc(var(--stagger-base, 0s) + var(--stagger-step, 0.1s) * 11);
 }
 
