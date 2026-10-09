@@ -8,7 +8,6 @@ import { buttonVariants } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Container } from "@/components/ui/container";
 import { SectionHeading } from "@/components/ui/section-heading";
-import { TagList } from "@/components/ui/tag-list";
 
 export const metadata: Metadata = pageMetadata({
   title: "About",
@@ -63,16 +62,32 @@ export default function AboutPage() {
             The <span className="font-serif italic">toolkit</span>
           </SectionHeading>
         </div>
-        <div className="mt-8 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {skills.map((group) => (
-            <div key={group.category}>
-              <h3 className="text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">
-                {group.category}
-              </h3>
-              <div className="mt-3">
-                <TagList items={group.skills} />
+            <Card
+              key={group.category}
+              className="group relative overflow-hidden bg-card/50 hover:bg-card hover:shadow-lg transition-colors border-border/50 hover:border-accent-text/30"
+            >
+              <div className="absolute inset-0 bg-gradient-to-br from-accent-text/10 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+
+              <div className="relative">
+                <h3 className="mb-4 flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.2em] text-foreground/80 transition-colors group-hover:text-accent-text">
+                  {group.category}
+                  <div className="h-px flex-1 bg-border/60 transition-colors group-hover:bg-accent-text/20" />
+                </h3>
+
+                <ul className="flex flex-wrap gap-2">
+                  {group.skills.map((item) => (
+                    <li
+                      key={item}
+                      className="rounded-md border border-border/40 bg-muted/40 px-2.5 py-1 text-[14px] text-muted-foreground transition-all duration-300 hover:border-accent-text/40 hover:bg-accent-text/10 hover:text-foreground"
+                    >
+                      {item}
+                    </li>
+                  ))}
+                </ul>
               </div>
-            </div>
+            </Card>
           ))}
         </div>
 

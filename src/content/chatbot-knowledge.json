@@ -119,7 +119,7 @@
         "skills",
         "tools"
       ],
-      "answer": "Frontend: React.js, Next.js, Vue.js, Redux Toolkit, Tailwind CSS. Backend: Node.js, Express.js, FastAPI, REST APIs. Databases: MySQL, MongoDB, PostgreSQL. AI: Groq and OpenAI APIs. He also works with TypeScript, Python, Git, Docker, and CI/CD."
+      "answer": "Frontend: React.js, Next.js, Vue.js, Redux Toolkit, Tailwind CSS. Backend: Node.js, Express.js, FastAPI, REST APIs. Databases: MySQL, MongoDB, PostgreSQL. AI: Groq and OpenAI APIs, RAG, and Embeddings. He also works with TypeScript, Python, Git, Docker, and CI/CD."
     },
     {
       "id": "education",

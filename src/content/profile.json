@@ -316,7 +316,9 @@
       "skills": [
         "Groq API",
         "OpenAI API",
-        "Prompt Engineering"
+        "Prompt Engineering",
+        "RAG",
+        "Embeddings"
       ]
     },
     {
@@ -369,11 +371,14 @@
       "skills": [
         "Data Structures and Algorithms",
         "Asynchronous State Management",
-        "Code Optimization",
-        "API Optimization",
         "Application Optimization",
+        "Code Splitting",
+        "Lazy Loading",
+        "Caching Strategies",
+        "API Optimization",
         "Query Optimization",
-        "Performance Optimization (Code Splitting, Lazy Loading, Caching)"
+        "Search Engine Optimization (SEO)",
+        "Semantic HTML"
       ]
     },
     {
