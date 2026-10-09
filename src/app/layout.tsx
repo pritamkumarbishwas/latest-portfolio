@@ -4,7 +4,6 @@ import "./globals.css";
 import { site } from "@/config/site";
 import { Footer } from "@/components/layout/Footer";
 import { Header } from "@/components/layout/Header";
-import { ScrollProgress } from "@/components/layout/ScrollProgress";
 import { ThemeProvider } from "@/components/layout/ThemeProvider";
 import { ChatLauncher } from "@/components/chat/ChatLauncher";
 import { ChatProvider } from "@/components/chat/ChatProvider";
@@ -90,7 +89,6 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
               {children}
             </main>
             <Footer />
-            <ScrollProgress />
             {chatEnabled ? <ChatLauncher /> : null}
             <Analytics />
           </ChatProvider>

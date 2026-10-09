@@ -6,9 +6,6 @@ import type { LanguageModel } from "ai";
 
 export type ChatProviderName = "groq" | "openai";
 
-const GROQ_MODEL_ID = "openai/gpt-oss-120b";
-const OPENAI_MODEL_ID = "gpt-4o-mini";
-
 /** Server configuration is missing or invalid. Never sent to the client. */
 export class ChatConfigError extends Error {
   constructor(message: string) {
@@ -34,18 +31,24 @@ function requireEnv(name: "GROQ_API_KEY" | "OPENAI_API_KEY"): string {
   return value;
 }
 
-/** Chat model: CHAT_MODEL env override, else the provider default. */
+function requireModel(): string {
+  const model = process.env.CHAT_MODEL?.trim();
+  if (!model) {
+    throw new ChatConfigError(
+      "CHAT_MODEL is not set (e.g. openai/gpt-oss-20b on groq, gpt-4o-mini on openai)",
+    );
+  }
+  return model;
+}
+
+/** Chat model id comes from CHAT_MODEL — no hardcoded defaults in code. */
 export function getChatModel(): LanguageModel {
-  const model = process.env.CHAT_MODEL?.trim() || undefined;
+  const model = requireModel();
 
   switch (resolveProviderName()) {
     case "openai":
-      return createOpenAI({ apiKey: requireEnv("OPENAI_API_KEY") })(
-        model ?? OPENAI_MODEL_ID,
-      );
+      return createOpenAI({ apiKey: requireEnv("OPENAI_API_KEY") })(model);
     case "groq":
-      return createGroq({ apiKey: requireEnv("GROQ_API_KEY") })(
-        model ?? GROQ_MODEL_ID,
-      );
+      return createGroq({ apiKey: requireEnv("GROQ_API_KEY") })(model);
   }
 }

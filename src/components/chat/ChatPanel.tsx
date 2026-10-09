@@ -211,19 +211,16 @@ export default function ChatPanel({ onClose }: ChatPanelProps) {
 
   return (
     <div className="fixed inset-0 z-[60]">
-      <button
-        type="button"
-        aria-label="Close chat"
-        onClick={onClose}
-        className="absolute inset-0 bg-background/55 backdrop-blur-sm motion-safe:animate-[reveal-fade_0.2s_ease-out_both]"
-        tabIndex={-1}
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 bg-background/55 motion-safe:animate-[reveal-fade_0.2s_ease-out_both]"
       />
       <div
         ref={dialogRef}
         role="dialog"
         aria-modal="true"
         aria-labelledby={TITLE_ID}
-        className="absolute inset-0 flex flex-col overflow-hidden bg-card text-card-foreground shadow-2xl motion-safe:animate-[panel-in_0.28s_cubic-bezier(0.22,1,0.36,1)_both] sm:inset-auto sm:bottom-6 sm:right-6 sm:h-[min(80dvh,44rem)] sm:max-h-[calc(100dvh-7rem)] sm:w-[min(30rem,calc(100vw-3rem))] sm:rounded-3xl sm:border sm:border-border sm:bg-card/95 sm:backdrop-blur-xl sm:shadow-2xl"
+        className="absolute inset-0 flex flex-col overflow-hidden bg-card text-card-foreground shadow-2xl motion-safe:animate-[panel-in_0.28s_cubic-bezier(0.22,1,0.36,1)_both] sm:inset-auto sm:bottom-6 sm:right-6 sm:h-[min(88dvh,52rem)] sm:max-h-[calc(100dvh-6rem)] sm:w-[min(30rem,calc(100vw-3rem))] sm:rounded-3xl sm:border sm:border-border sm:bg-card/95 sm:backdrop-blur-xl sm:shadow-2xl"
       >
         <header className="flex items-center justify-between gap-3 border-b border-border bg-card/80 px-4 pb-3 pt-[max(0.75rem,env(safe-area-inset-top))] backdrop-blur-sm sm:pt-3">
           <div className="flex min-w-0 items-center gap-3">
