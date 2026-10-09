@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowUp, Square } from "lucide-react";
+import { Send, Square } from "lucide-react";
 import { useRef, useState, type KeyboardEvent } from "react";
 import { track } from "@vercel/analytics";
 
@@ -88,9 +88,8 @@ export function ChatInput({ onSend, onStop, busy, maxLength }: ChatInputProps) {
           {showCounter ? (
             <span
               id="chat-input-counter"
-              className={`text-[0.65rem] tabular-nums ${
-                atLimit ? "text-red-500" : "text-muted-foreground"
-              }`}
+              className={`text-[0.65rem] tabular-nums ${atLimit ? "text-red-500" : "text-muted-foreground"
+                }`}
             >
               {value.length}/{maxLength}
             </span>
@@ -114,7 +113,7 @@ export function ChatInput({ onSend, onStop, busy, maxLength }: ChatInputProps) {
               aria-label="Send message"
               className="size-11 rounded-full shadow-sm transition-transform active:scale-95 sm:size-9"
             >
-              <ArrowUp className="size-4" aria-hidden="true" />
+              <Send className="size-14" aria-hidden="true" />
             </Button>
           )}
         </div>
