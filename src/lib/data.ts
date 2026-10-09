@@ -87,7 +87,7 @@ const HOME_SKILL_GROUPS = 4;
 const HOME_SKILLS_PER_GROUP = 5;
 
 export const aboutPreview: AboutPreviewContent = {
-  bio: [profile.summaryShort],
+  bio: [profile.story[0], profile.story[1]],
   skills: skills
     .slice(0, HOME_SKILL_GROUPS)
     .map((group) => ({
