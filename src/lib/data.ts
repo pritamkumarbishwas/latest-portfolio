@@ -77,8 +77,8 @@ export const experience: readonly ExperienceItem[] = profile.experience;
 /** Professional summary, sourced from src/content/profile.json. */
 export const summary: string = profile.summary;
 
-/** Full professional summary, shown as the home hero tagline. */
-export const tagline: string = summary;
+/** Short professional summary, shown as the home hero tagline. */
+export const tagline: string = profile.summaryShort;
 
 /** Every skill group, sourced from src/content/profile.json. */
 export const skills: readonly SkillGroup[] = profile.skills;

@@ -1,6 +1,6 @@
 import type { CSSProperties } from "react";
 import Link from "next/link";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, Download } from "lucide-react";
 import { site } from "@/config/site";
 import { hero, tagline } from "@/lib/data";
 import { Container } from "@/components/ui/container";
@@ -10,6 +10,10 @@ const reveal = (delay: number) =>
   ({ "--reveal-delay": `${delay}s` }) as CSSProperties;
 
 export function Hero() {
+  const [first, ...rest] = tagline.split(". ");
+  const lead = first.replace(/\.$/, "");
+  const body = rest.join(". ");
+
   return (
     <section className="relative overflow-hidden">
       <div
@@ -23,13 +27,16 @@ export function Hero() {
 
       <Container className="relative flex flex-col py-24 md:py-36">
         <div className="hero-fade">
-          <p className="inline-flex w-fit items-center gap-2 rounded-full border border-border bg-card px-3 py-1 text-xs text-muted-foreground">
-            <span className="relative flex size-1.5">
+          <Link
+            href={site.cta.href}
+            className="inline-flex w-fit items-center gap-2 rounded-full border border-border bg-card px-3 py-1 text-xs text-muted-foreground transition-colors hover:border-accent-text hover:text-foreground"
+          >
+            <span className="relative flex size-1.5" aria-hidden="true">
               <span className="absolute inline-flex size-full animate-ping rounded-full bg-accent opacity-75" />
               <span className="relative inline-flex size-1.5 rounded-full bg-accent" />
             </span>
             {hero.badge}
-          </p>
+          </Link>
         </div>
 
         <div className="hero-reveal mt-8" style={reveal(0.08)}>
@@ -40,16 +47,19 @@ export function Hero() {
 
         <div className="hero-reveal mt-6" style={reveal(0.16)}>
           <p className="max-w-2xl text-lg leading-relaxed text-muted-foreground md:text-xl">
-            {tagline.startsWith(site.role) ? (
+            {lead.startsWith(site.role) ? (
               <>
                 <span className="font-serif italic text-foreground">
                   {site.role}
                 </span>{" "}
-                {tagline.slice(site.role.length).trimStart()}
+                {lead.slice(site.role.length).trimStart()}.
               </>
             ) : (
-              tagline
+              <>
+                {lead}.
+              </>
             )}
+            {body ? <> {body}</> : null}
           </p>
         </div>
 
@@ -67,6 +77,14 @@ export function Hero() {
             {hero.secondaryCta.label}
             <ArrowUpRight className="size-4" aria-hidden="true" />
           </Link>
+          <a
+            href="/resume.pdf"
+            download
+            className={buttonVariants({ variant: "ghost" })}
+          >
+            <Download className="size-4" aria-hidden="true" />
+            Download resume
+          </a>
         </div>
       </Container>
     </section>

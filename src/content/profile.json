@@ -25,7 +25,7 @@
     ]
   },
   "summary": "Full-Stack Engineer with 3+ years of experience building scalable web applications with React.js, Next.js, Vue.js, Node.js, Express.js, and TypeScript. Experienced in REST APIs, authentication, payments, and database-driven features, with a record of debugging production issues on live fintech and e-learning platforms.",
-  "summaryShort": "Full-stack engineer with 3+ years of experience building scalable web apps with React.js, Next.js, Vue.js, Node.js, and TypeScript.",
+  "summaryShort": "Full-Stack Engineer with 3+ years of experience building scalable web apps with React.js, Next.js, Vue.js, Node.js, and TypeScript.",
   "experience": [
     {
       "company": "Definedge Solution Pvt. Ltd.",
@@ -83,57 +83,6 @@
     }
   ],
   "projects": [
-    {
-      "title": "AI-Powered Resume Builder",
-      "slug": "ai-resume-builder",
-      "summary": "Full-stack application that generates ATS-friendly resumes and tailored application materials.",
-      "cover": "/work/ai-resume-builder.svg",
-      "liveUrl": "https://resume-builder-rho-woad.vercel.app/",
-      "techStack": [
-        "FastAPI",
-        "Python",
-        "React",
-        "TypeScript",
-        "Tailwind CSS",
-        "Redux Toolkit",
-        "MongoDB",
-        "Groq API",
-        "OpenAI API"
-      ],
-      "highlights": [
-        "Architected a FastAPI backend integrating Groq/OpenAI LLMs for resume tailoring, summary generation, and cover letter creation based on target job descriptions.",
-        "Engineered a \"Fact Guard\" system that intercepts LLM responses and rejects hallucinated metrics or experiences not present in the user's data.",
-        "Built an AI analysis pipeline that scores resumes for ATS compatibility, identifies skill gaps, gives actionable feedback, and generates interview questions.",
-        "Implemented document parsing with PyMuPDF and python-docx to extract text from multi-column PDF and DOCX uploads, and export engines (Jinja2, xhtml2pdf, python-docx) for ATS-compliant PDF and DOCX output.",
-        "Designed a privacy-first data flow with MongoDB (Motor), keeping parsed resumes in memory and persisting only user-initiated versions.",
-        "Developed the frontend with React 19, TypeScript, Vite, Tailwind CSS, Redux Toolkit, and Radix UI, with AI agents interacting only with a centralized JSON schema while templates handle layout."
-      ]
-    },
-    {
-      "title": "Chat AI",
-      "slug": "chat-ai",
-      "summary": "Full-stack ChatGPT-style application where users chat with multiple LLMs, with streamed responses, persistent conversation history, and a responsive interface.",
-      "cover": "/work/chat-ai.svg",
-      "liveUrl": "https://chat-ai-f3n9-eight.vercel.app/",
-      "techStack": [
-        "React",
-        "TypeScript",
-        "Vite",
-        "Tailwind CSS",
-        "Redux Toolkit",
-        "FastAPI",
-        "Python",
-        "MongoDB",
-        "OpenAI API",
-        "Groq API"
-      ],
-      "highlights": [
-        "Built a ChatGPT-style web app with a React, TypeScript, and Redux Toolkit frontend and a FastAPI backend, streaming LLM responses in real time over Server-Sent Events (SSE).",
-        "Designed a provider abstraction layer that switches between OpenAI (GPT-4o), Groq (LLaMA 3), and a mock provider for local testing.",
-        "Implemented chat management (create, rename, delete, switch conversations) with MongoDB persistence, plus RTK Query for data fetching, optimistic updates, and message retries.",
-        "Developed a responsive UI with Tailwind CSS and Radix UI, Markdown rendering with syntax highlighting, and FastAPI middleware for request timing, request IDs, and CORS."
-      ]
-    },
     {
       "title": "Gurukul",
       "slug": "gurukul",
@@ -196,6 +145,57 @@
         "Developed a responsive trading interface using Vue.js, JavaScript, and Tailwind CSS for presenting market data, trading signals, and portfolio information.",
         "Built interactive dashboards and reusable components to display real-time market data and trading-related insights.",
         "Integrated RESTful APIs for retrieving market data and supporting order execution and portfolio management workflows."
+      ]
+    },
+    {
+      "title": "AI-Powered Resume Builder",
+      "slug": "ai-resume-builder",
+      "summary": "Full-stack application that generates ATS-friendly resumes and tailored application materials.",
+      "cover": "/work/ai-resume-builder.svg",
+      "liveUrl": "https://resume-builder-rho-woad.vercel.app/",
+      "techStack": [
+        "FastAPI",
+        "Python",
+        "React",
+        "TypeScript",
+        "Tailwind CSS",
+        "Redux Toolkit",
+        "MongoDB",
+        "Groq API",
+        "OpenAI API"
+      ],
+      "highlights": [
+        "Architected a FastAPI backend integrating Groq/OpenAI LLMs for resume tailoring, summary generation, and cover letter creation based on target job descriptions.",
+        "Engineered a \"Fact Guard\" system that intercepts LLM responses and rejects hallucinated metrics or experiences not present in the user's data.",
+        "Built an AI analysis pipeline that scores resumes for ATS compatibility, identifies skill gaps, gives actionable feedback, and generates interview questions.",
+        "Implemented document parsing with PyMuPDF and python-docx to extract text from multi-column PDF and DOCX uploads, and export engines (Jinja2, xhtml2pdf, python-docx) for ATS-compliant PDF and DOCX output.",
+        "Designed a privacy-first data flow with MongoDB (Motor), keeping parsed resumes in memory and persisting only user-initiated versions.",
+        "Developed the frontend with React 19, TypeScript, Vite, Tailwind CSS, Redux Toolkit, and Radix UI, with AI agents interacting only with a centralized JSON schema while templates handle layout."
+      ]
+    },
+    {
+      "title": "Chat AI",
+      "slug": "chat-ai",
+      "summary": "Full-stack ChatGPT-style application where users chat with multiple LLMs, with streamed responses, persistent conversation history, and a responsive interface.",
+      "cover": "/work/chat-ai.svg",
+      "liveUrl": "https://chat-ai-f3n9-eight.vercel.app/",
+      "techStack": [
+        "React",
+        "TypeScript",
+        "Vite",
+        "Tailwind CSS",
+        "Redux Toolkit",
+        "FastAPI",
+        "Python",
+        "MongoDB",
+        "OpenAI API",
+        "Groq API"
+      ],
+      "highlights": [
+        "Built a ChatGPT-style web app with a React, TypeScript, and Redux Toolkit frontend and a FastAPI backend, streaming LLM responses in real time over Server-Sent Events (SSE).",
+        "Designed a provider abstraction layer that switches between OpenAI (GPT-4o), Groq (LLaMA 3), and a mock provider for local testing.",
+        "Implemented chat management (create, rename, delete, switch conversations) with MongoDB persistence, plus RTK Query for data fetching, optimistic updates, and message retries.",
+        "Developed a responsive UI with Tailwind CSS and Radix UI, Markdown rendering with syntax highlighting, and FastAPI middleware for request timing, request IDs, and CORS."
       ]
     },
     {
@@ -313,11 +313,19 @@
     },
     {
       "category": "AI / LLM",
-      "skills": ["Groq API", "OpenAI API", "Prompt Engineering"]
+      "skills": [
+        "Groq API",
+        "OpenAI API",
+        "Prompt Engineering"
+      ]
     },
     {
       "category": "Python Libraries",
-      "skills": ["PyMuPDF", "python-docx", "Jinja2"]
+      "skills": [
+        "PyMuPDF",
+        "python-docx",
+        "Jinja2"
+      ]
     },
     {
       "category": "Databases",
