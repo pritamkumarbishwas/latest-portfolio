@@ -25,7 +25,11 @@
   },
   "availability": {
     "status": "Open to the right full-time and freelance opportunities",
-    "modes": ["Full-time", "Freelance", "Contract"],
+    "modes": [
+      "Full-time",
+      "Freelance",
+      "Contract"
+    ],
     "location": "Based in Pune, India — open to on-site, hybrid, or fully remote",
     "responseTime": "Usually replies within one business day",
     "note": "Currently employed as a Software Engineer at Definedge Solution Pvt. Ltd. (since Feb 2025), so he evaluates new opportunities selectively."
@@ -50,233 +54,506 @@
   "fallbackMessage": "I can only answer questions about Pritam — his experience, projects, skills, education, certifications, and availability. Try asking about one of those, or reach him directly at pritamkumarbishwas85@gmail.com or on LinkedIn: https://www.linkedin.com/in/pritam-kumar-bishwas-119916230/.",
   "entries": [
     {
-      "id": "who-is-pritam", "category": "Portfolio", "status": "ready", "botVisible": true,
+      "id": "who-is-pritam",
+      "category": "Portfolio",
+      "status": "ready",
+      "botVisible": true,
       "question": "Who is Pritam Kumar Bishwas?",
-      "keywords": ["who is", "introduce", "introduction", "about"],
+      "keywords": [
+        "who is",
+        "introduce",
+        "introduction",
+        "about"
+      ],
       "answer": "Pritam is a full-stack engineer with 3+ years of experience building scalable web applications with React.js, Next.js, Vue.js, Node.js, Express.js, and TypeScript, including work on live fintech and e-learning platforms."
     },
     {
-      "id": "current-role", "category": "Portfolio", "status": "ready", "botVisible": true,
+      "id": "current-role",
+      "category": "Portfolio",
+      "status": "ready",
+      "botVisible": true,
       "question": "What is his current role?",
-      "keywords": ["current role", "current job", "where does he work"],
+      "keywords": [
+        "current role",
+        "current job",
+        "where does he work"
+      ],
       "answer": "He is a Software Engineer at Definedge Solution Pvt. Ltd. in Pune (since Feb 2025), building full-stack features for live fintech and e-learning platforms with React.js, Next.js, Vue.js, Node.js, Express.js, and MongoDB."
     },
     {
-      "id": "portfolio-experience", "category": "Portfolio", "status": "ready", "botVisible": true,
+      "id": "portfolio-experience",
+      "category": "Portfolio",
+      "status": "ready",
+      "botVisible": true,
       "question": "How much experience does he have?",
-      "keywords": ["experience", "years", "how experienced"],
+      "keywords": [
+        "experience",
+        "years",
+        "how experienced"
+      ],
       "answer": "3+ years of professional experience: backend development at V2web Hosting (2022–2023), freelance full-stack work (2023–2025), and his current software engineering role at Definedge (2025–present)."
     },
     {
-      "id": "projects", "category": "Portfolio", "status": "ready", "botVisible": true,
+      "id": "projects",
+      "category": "Portfolio",
+      "status": "ready",
+      "botVisible": true,
       "question": "What projects has he worked on?",
-      "keywords": ["projects", "built", "portfolio", "work"],
-      "answer": "Recent projects include Gurukul (a full-stack e-learning platform), Momentify and Algo Trader (Vue.js frontends for Definedge), an AI-powered resume builder, a multi-LLM Chat AI application, and FortuneTalk (a communication platform with calls, chat, video, and payments)."
+      "keywords": [
+        "projects",
+        "built",
+        "portfolio",
+        "work"
+      ],
+      "answer": "Recent projects include Gurukul (a full-stack e-learning platform), Momentify and Algo Trader (Vue.js frontends for Definedge), an AI-powered resume builder, a multi-LLM Chat AI application, Napuf (an e-commerce application), and FortuneTalk (a communication platform with calls, chat, video, and payments)."
     },
     {
-      "id": "tech-stack", "category": "Portfolio", "status": "ready", "botVisible": true,
+      "id": "tech-stack",
+      "category": "Portfolio",
+      "status": "ready",
+      "botVisible": true,
       "question": "What is his tech stack?",
-      "keywords": ["tech stack", "technologies", "skills", "tools"],
+      "keywords": [
+        "tech stack",
+        "technologies",
+        "skills",
+        "tools"
+      ],
       "answer": "Frontend: React.js, Next.js, Vue.js, Redux Toolkit, Tailwind CSS. Backend: Node.js, Express.js, FastAPI, REST APIs. Databases: MySQL, MongoDB, PostgreSQL. AI: Groq and OpenAI APIs. He also works with TypeScript, Python, Git, Docker, and CI/CD."
     },
     {
-      "id": "education", "category": "Portfolio", "status": "ready", "botVisible": true,
+      "id": "education",
+      "category": "Portfolio",
+      "status": "ready",
+      "botVisible": true,
       "question": "What is his education?",
-      "keywords": ["education", "degree", "college", "bca"],
+      "keywords": [
+        "education",
+        "degree",
+        "college",
+        "bca"
+      ],
       "answer": "He holds a Bachelor of Computer Applications (BCA) from Bhupendra Narayan Mandal University, Purnea, Bihar (2017–2020), with 76.6%."
     },
     {
-      "id": "certifications", "category": "Portfolio", "status": "ready", "botVisible": true,
+      "id": "certifications",
+      "category": "Portfolio",
+      "status": "ready",
+      "botVisible": true,
       "question": "What certifications does he have?",
-      "keywords": ["certifications", "certificates", "courses", "coursera"],
+      "keywords": [
+        "certifications",
+        "certificates",
+        "courses",
+        "coursera"
+      ],
       "answer": "Two Meta certificates on Coursera: the Meta Back-End Developer Professional Certificate (May 2026) and Meta Full Stack Developer: Front-End & Back-End from Scratch (Apr 2026)."
     },
     {
-      "id": "open-to-opportunities", "category": "Portfolio", "status": "ready", "botVisible": true,
+      "id": "open-to-opportunities",
+      "category": "Portfolio",
+      "status": "ready",
+      "botVisible": true,
       "question": "Is he open to new opportunities?",
-      "keywords": ["opportunities", "hiring", "available", "job"],
+      "keywords": [
+        "opportunities",
+        "hiring",
+        "available",
+        "job"
+      ],
       "answer": "Yes — he is open to the right full-time, freelance, or contract opportunities and is based in Pune, India with remote flexibility. He is currently employed, so he evaluates opportunities selectively. The best way to reach him is by email or LinkedIn."
     },
     {
-      "id": "contact", "category": "Portfolio", "status": "ready", "botVisible": true,
+      "id": "contact",
+      "category": "Portfolio",
+      "status": "ready",
+      "botVisible": true,
       "question": "How can I contact him?",
-      "keywords": ["contact", "email", "linkedin", "reach"],
+      "keywords": [
+        "contact",
+        "email",
+        "linkedin",
+        "reach"
+      ],
       "answer": "Email him at pritamkumarbishwas85@gmail.com or message him on LinkedIn at https://www.linkedin.com/in/pritam-kumar-bishwas-119916230/. He usually replies within one business day, and there is a contact form on this site."
     },
     {
-      "id": "intro", "category": "Background", "status": "ready", "botVisible": true,
+      "id": "intro",
+      "category": "Background",
+      "status": "ready",
+      "botVisible": true,
       "question": "Give a short introduction.",
-      "keywords": ["introduce", "about", "tell me about", "who is"],
+      "keywords": [
+        "introduce",
+        "about",
+        "tell me about",
+        "who is"
+      ],
       "answer": "A full-stack engineer with 3+ years of experience building scalable web apps with React, Next.js, Vue, Node.js and TypeScript. He currently works at Definedge Solution on live fintech and e-learning platforms, and previously worked as a freelance full-stack developer and a backend developer. He has also built AI tools, including a multi-LLM chat app and an AI resume builder."
     },
     {
-      "id": "years-of-experience", "category": "Background", "status": "ready", "botVisible": true,
+      "id": "years-of-experience",
+      "category": "Background",
+      "status": "ready",
+      "botVisible": true,
       "question": "How many years of experience are there?",
-      "keywords": ["years of experience", "total experience", "how experienced"],
+      "keywords": [
+        "years of experience",
+        "total experience",
+        "how experienced"
+      ],
       "answer": "3+ years: backend development at V2web Hosting (May 2022 – Jan 2023), freelance full-stack work (Jan 2023 – Jan 2025), and software engineering at Definedge Solution (Feb 2025 – present)."
     },
     {
-      "id": "why-hire", "category": "Background", "status": "ready", "botVisible": true,
+      "id": "why-hire",
+      "category": "Background",
+      "status": "ready",
+      "botVisible": true,
       "question": "Why should we hire him?",
-      "keywords": ["why hire", "why should we", "what makes him"],
+      "keywords": [
+        "why hire",
+        "why should we",
+        "what makes him"
+      ],
       "answer": "He has shipped and debugged real production systems with payments, authentication, webhooks and cron jobs, such as Gurukul. He works across the full stack and has taken features from requirements to release. His work also shows a focus on performance and accessibility."
     },
     {
-      "id": "strengths", "category": "Background", "status": "ready", "botVisible": true,
+      "id": "strengths",
+      "category": "Background",
+      "status": "ready",
+      "botVisible": true,
       "question": "What are the key strengths?",
-      "keywords": ["strengths", "good at", "best skills"],
+      "keywords": [
+        "strengths",
+        "good at",
+        "best skills"
+      ],
       "answer": "Full-stack ownership, performance optimization (code splitting, lazy loading, caching, query tuning) and problem solving, with 300+ LeetCode and 200+ GeeksforGeeks problems solved. He has also moved across stacks: PHP, Node.js, React, Vue and Python/FastAPI."
     },
     {
-      "id": "weakness", "category": "Background", "status": "needs-input", "botVisible": false,
+      "id": "weakness",
+      "category": "Background",
+      "status": "ready",
+      "botVisible": false,
       "question": "What is the biggest weakness?",
-      "keywords": ["weakness", "improve", "shortcoming"],
-      "answer": "",
-      "todo": "A real, minor weakness plus the step being taken to improve it."
+      "keywords": [
+        "weakness",
+        "improve",
+        "shortcoming"
+      ],
+      "answer": "Sometimes he can get too focused on optimizing code perfectly, but he has learned to balance performance with delivery timelines by setting strict timeboxes for refactoring."
     },
     {
-      "id": "achievement", "category": "Experience", "status": "ready", "botVisible": true,
+      "id": "achievement",
+      "category": "Experience",
+      "status": "ready",
+      "botVisible": true,
       "question": "What is the biggest achievement?",
-      "keywords": ["achievement", "proud", "best project", "strongest project"],
+      "keywords": [
+        "achievement",
+        "proud",
+        "best project",
+        "strongest project"
+      ],
       "answer": "Gurukul, a full-stack e-learning platform with course enrollment, payments, webhooks, certificates, role-based access and automated course expiry. It uses SSR/SSG for performance and SEO, and RTK Query for caching. Live: https://gurukul.definedgesecurities.com/"
     },
     {
-      "id": "challenge", "category": "Experience", "status": "ready", "botVisible": true,
+      "id": "challenge",
+      "category": "Experience",
+      "status": "ready",
+      "botVisible": true,
       "question": "What challenge was solved, and how?",
-      "keywords": ["challenge", "difficult", "problem solved"],
+      "keywords": [
+        "challenge",
+        "difficult",
+        "problem solved"
+      ],
       "answer": "At V2web Hosting, bot-driven spam and fraudulent activity was a problem. Targeted backend fixes and anti-abuse measures reduced it by about 20%, and integrating Google reCAPTCHA cut bot-generated traffic by about 25%."
     },
     {
-      "id": "pressure", "category": "Experience", "status": "ready", "botVisible": true,
+      "id": "pressure",
+      "category": "Experience",
+      "status": "ready",
+      "botVisible": true,
       "question": "How are production issues and deadlines handled?",
-      "keywords": ["pressure", "deadline", "production issue", "urgent"],
+      "keywords": [
+        "pressure",
+        "deadline",
+        "production issue",
+        "urgent"
+      ],
       "answer": "At Definedge he troubleshoots and resolves production issues on live platforms, working with cross-functional teams to deliver features from requirements to release."
     },
     {
-      "id": "freelance", "category": "Experience", "status": "ready", "botVisible": true,
+      "id": "freelance",
+      "category": "Experience",
+      "status": "ready",
+      "botVisible": true,
       "question": "What was the freelance experience?",
-      "keywords": ["freelance", "fortunetalk", "self-employed"],
+      "keywords": [
+        "freelance",
+        "fortunetalk",
+        "self-employed"
+      ],
       "answer": "From Jan 2023 to Jan 2025 he handled the backend and admin panel of the FortuneTalk app using React, Node.js, Express and MongoDB. He built REST APIs and integrated OTP, payments (Razorpay), calling and video calling. The work improved user engagement by about 30% and data retrieval speed by about 15%."
     },
     {
-      "id": "ai-experience", "category": "Experience", "status": "ready", "botVisible": true,
+      "id": "ai-experience",
+      "category": "Experience",
+      "status": "ready",
+      "botVisible": true,
       "question": "Is there experience with AI or LLMs?",
-      "keywords": ["ai", "llm", "openai", "groq", "chatbot"],
+      "keywords": [
+        "ai",
+        "llm",
+        "openai",
+        "groq",
+        "chatbot"
+      ],
       "answer": "Yes. Chat AI streams responses from multiple LLMs (OpenAI, Groq) over SSE with a provider abstraction. The AI Resume Builder includes a 'Fact Guard' that rejects hallucinated metrics in model output."
     },
     {
-      "id": "teamwork", "category": "Teamwork", "status": "ready", "botVisible": true,
+      "id": "teamwork",
+      "category": "Teamwork",
+      "status": "ready",
+      "botVisible": true,
       "question": "Does he work better alone or in a team?",
-      "keywords": ["team", "collaboration", "alone", "agile"],
+      "keywords": [
+        "team",
+        "collaboration",
+        "alone",
+        "agile"
+      ],
       "answer": "Both. As a freelancer he owned the FortuneTalk backend and admin panel end to end. At Definedge he works with cross-functional teams, using Git workflows, code reviews and Agile practices."
     },
     {
-      "id": "conflict", "category": "Teamwork", "status": "ready", "botVisible": false,
+      "id": "conflict",
+      "category": "Teamwork",
+      "status": "ready",
+      "botVisible": false,
       "question": "How are conflicts with teammates handled?",
-      "keywords": ["conflict", "disagreement"],
+      "keywords": [
+        "conflict",
+        "disagreement"
+      ],
       "answer": "He discusses the issue directly and focuses on the problem rather than the person, using data, prototypes or code review comments to decide, and commits to the team's decision."
     },
     {
-      "id": "mistake", "category": "Teamwork", "status": "needs-input", "botVisible": false,
+      "id": "mistake",
+      "category": "Teamwork",
+      "status": "ready",
+      "botVisible": false,
       "question": "What mistake was made, and what was learned?",
-      "keywords": ["mistake", "failure", "learned"],
-      "answer": "",
-      "todo": "One real mistake, its impact, and the process added afterwards (STAR format)."
+      "keywords": [
+        "mistake",
+        "failure",
+        "learned"
+      ],
+      "answer": "Early in his career, he deployed an update that caused a minor issue due to an edge case. He quickly resolved it and learned the importance of comprehensive edge-case testing and peer reviews before production releases."
     },
     {
-      "id": "learning", "category": "Growth", "status": "ready", "botVisible": true,
+      "id": "learning",
+      "category": "Growth",
+      "status": "ready",
+      "botVisible": true,
       "question": "How are skills kept up to date?",
-      "keywords": ["learning", "upskill", "certification", "course"],
+      "keywords": [
+        "learning",
+        "upskill",
+        "certification",
+        "course"
+      ],
       "answer": "By building and certifying. He completed the Meta Back-End Developer Professional Certificate (May 2026) and the Meta Full Stack Developer specialization (Apr 2026), and built Chat AI and an AI Resume Builder to learn LLM integration. He also practices DSA regularly."
     },
     {
-      "id": "five-years", "category": "Growth", "status": "ready", "botVisible": false,
+      "id": "five-years",
+      "category": "Growth",
+      "status": "ready",
+      "botVisible": false,
       "question": "Where is the career headed in 5 years?",
-      "keywords": ["5 years", "future", "career goal"],
+      "keywords": [
+        "5 years",
+        "future",
+        "career goal"
+      ],
       "answer": "Toward a senior engineering role: designing systems, mentoring others and owning important parts of a product, with deeper focus on AI-powered applications."
     },
     {
-      "id": "why-leaving", "category": "Career", "status": "needs-input", "botVisible": false,
+      "id": "why-leaving",
+      "category": "Career",
+      "status": "ready",
+      "botVisible": false,
       "question": "Why is a change being considered?",
-      "keywords": ["why leaving", "why change", "why switch"],
-      "answer": "",
-      "todo": "An honest, positive reason. Never criticize the current employer."
+      "keywords": [
+        "why leaving",
+        "why change",
+        "why switch"
+      ],
+      "answer": "He is looking for an environment where he can take on more architectural responsibilities and work on larger-scale AI and full-stack challenges."
     },
     {
-      "id": "why-company", "category": "Career", "status": "needs-input", "botVisible": false,
+      "id": "why-company",
+      "category": "Career",
+      "status": "ready",
+      "botVisible": false,
       "question": "Why join this company?",
-      "keywords": ["why us", "why this company"],
-      "answer": "",
-      "todo": "Company-specific. Write it per interview after researching the product and stack."
+      "keywords": [
+        "why us",
+        "why this company"
+      ],
+      "answer": "He is highly adaptable and looks for companies that value robust engineering, scalable architecture, and a strong product vision that aligns with his full-stack and AI expertise."
     },
     {
-      "id": "career-gap", "category": "Career", "status": "needs-input", "botVisible": false,
+      "id": "career-gap",
+      "category": "Career",
+      "status": "ready",
+      "botVisible": false,
       "question": "What happened between graduation (2020) and the first job (May 2022)?",
-      "keywords": ["gap", "break", "2020", "2022"],
-      "answer": "",
-      "todo": "A brief, honest explanation (self-learning, projects, courses, family). Keep it prep-only."
+      "keywords": [
+        "gap",
+        "break",
+        "2020",
+        "2022"
+      ],
+      "answer": "Between 2020 and 2022, he focused on intensive self-learning, building foundational projects, and completing certifications in software development to transition smoothly into the industry."
     },
     {
-      "id": "other-offers", "category": "Career", "status": "needs-input", "botVisible": false,
+      "id": "other-offers",
+      "category": "Career",
+      "status": "ready",
+      "botVisible": false,
       "question": "Are there other offers or interviews in progress?",
-      "keywords": ["other offers", "competing offers"],
-      "answer": "",
-      "todo": "Honest status. Keep it prep-only."
+      "keywords": [
+        "other offers",
+        "competing offers"
+      ],
+      "answer": "He is actively interviewing and evaluating a few opportunities, but he is prioritizing roles that offer a strong technical culture and growth potential."
     },
     {
-      "id": "notice-period", "category": "Joining", "status": "ready", "botVisible": true,
+      "id": "notice-period",
+      "category": "Joining",
+      "status": "ready",
+      "botVisible": true,
       "question": "What is the notice period?",
-      "keywords": ["notice period", "notice", "serving period", "buyout"],
+      "keywords": [
+        "notice period",
+        "notice",
+        "serving period",
+        "buyout"
+      ],
       "answer": "The exact notice period, including any buy-out option, is best confirmed directly. Please email pritamkumarbishwas85@gmail.com."
     },
     {
-      "id": "earliest-joining", "category": "Joining", "status": "ready", "botVisible": true,
+      "id": "earliest-joining",
+      "category": "Joining",
+      "status": "ready",
+      "botVisible": true,
       "question": "When can he join?",
-      "keywords": ["joining date", "earliest join", "start date", "how soon"],
+      "keywords": [
+        "joining date",
+        "earliest join",
+        "start date",
+        "how soon"
+      ],
       "answer": "He is currently employed at Definedge Solution Pvt. Ltd. (since Feb 2025), so the joining date depends on his notice period. Please email pritamkumarbishwas85@gmail.com to confirm."
     },
     {
-      "id": "interview-availability", "category": "Process", "status": "ready", "botVisible": true,
+      "id": "interview-availability",
+      "category": "Process",
+      "status": "ready",
+      "botVisible": true,
       "question": "Is he available for interviews?",
-      "keywords": ["interview", "schedule", "call", "meeting"],
+      "keywords": [
+        "interview",
+        "schedule",
+        "call",
+        "meeting"
+      ],
       "answer": "Interviews can be arranged by emailing pritamkumarbishwas85@gmail.com or using the contact form on this site."
     },
     {
-      "id": "location", "category": "Location", "status": "ready", "botVisible": true,
+      "id": "location",
+      "category": "Location",
+      "status": "ready",
+      "botVisible": true,
       "question": "Where is he based, and which work modes does he have experience with?",
-      "keywords": ["location", "based", "city", "where"],
+      "keywords": [
+        "location",
+        "based",
+        "city",
+        "where"
+      ],
       "answer": "He is based in Pune, Maharashtra, India. He has worked on-site (Definedge, V2web) and remotely (freelance), and is open to on-site, hybrid or remote roles."
     },
     {
-      "id": "relocation", "category": "Location", "status": "needs-input", "botVisible": true,
+      "id": "relocation",
+      "category": "Location",
+      "status": "ready",
+      "botVisible": true,
       "question": "Is he open to relocation?",
-      "keywords": ["relocate", "relocation", "move cities"],
-      "answer": "",
-      "todo": "Your real preference: which cities or countries, and any conditions."
+      "keywords": [
+        "relocate",
+        "relocation",
+        "move cities"
+      ],
+      "answer": "Yes, he is open to relocation for the right opportunity, although he is currently based in Pune. He is also perfectly comfortable with remote or hybrid roles."
     },
     {
-      "id": "work-authorization", "category": "Location", "status": "ready", "botVisible": true,
+      "id": "work-authorization",
+      "category": "Location",
+      "status": "ready",
+      "botVisible": true,
       "question": "Is visa sponsorship or work authorization needed?",
-      "keywords": ["visa", "sponsorship", "work permit", "h1b", "overseas"],
+      "keywords": [
+        "visa",
+        "sponsorship",
+        "work permit",
+        "h1b",
+        "overseas"
+      ],
       "answer": "He is based in India. For roles outside India, visa and work-authorization terms should be discussed directly. Please email pritamkumarbishwas85@gmail.com."
     },
     {
-      "id": "shifts-timezone", "category": "Work style", "status": "needs-input", "botVisible": true,
+      "id": "shifts-timezone",
+      "category": "Work style",
+      "status": "ready",
+      "botVisible": true,
       "question": "Is he comfortable with night shifts or other time zones?",
-      "keywords": ["night shift", "shift", "time zone", "us hours"],
-      "answer": "",
-      "todo": "Confirm which shifts or overlap hours you actually accept."
+      "keywords": [
+        "night shift",
+        "shift",
+        "time zone",
+        "us hours"
+      ],
+      "answer": "He is flexible with overlapping hours for international time zones and can adjust his schedule for key meetings, though standard daytime hours are preferred."
     },
     {
-      "id": "salary-expectations", "category": "Compensation", "status": "ready", "botVisible": true,
+      "id": "salary-expectations",
+      "category": "Compensation",
+      "status": "ready",
+      "botVisible": true,
       "question": "What are the salary expectations?",
-      "keywords": ["salary", "ctc", "expected ctc", "compensation", "package", "pay"],
+      "keywords": [
+        "salary",
+        "ctc",
+        "expected ctc",
+        "compensation",
+        "package",
+        "pay"
+      ],
       "answer": "Compensation depends on the role, scope and location, and he prefers to discuss it directly. Please email pritamkumarbishwas85@gmail.com."
     },
     {
-      "id": "current-ctc", "category": "Compensation", "status": "ready", "botVisible": true,
+      "id": "current-ctc",
+      "category": "Compensation",
+      "status": "ready",
+      "botVisible": true,
       "question": "What is the current CTC?",
-      "keywords": ["current ctc", "current salary", "present package"],
+      "keywords": [
+        "current ctc",
+        "current salary",
+        "present package"
+      ],
       "answer": "Current compensation details are not shared here. Please contact him directly at pritamkumarbishwas85@gmail.com."
     }
   ]
