@@ -10,6 +10,7 @@ import { ChatLauncher } from "@/components/chat/ChatLauncher";
 import { ChatProvider } from "@/components/chat/ChatProvider";
 import { RevealObserver } from "@/components/motion";
 import { RouteFocus } from "@/components/layout/RouteFocus";
+import { Analytics } from "@vercel/analytics/react";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -91,6 +92,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
             <Footer />
             <ScrollProgress />
             {chatEnabled ? <ChatLauncher /> : null}
+            <Analytics />
           </ChatProvider>
         </ThemeProvider>
       </body>

@@ -1,5 +1,6 @@
 import {
   createUIMessageStreamResponse,
+  isStepCount,
   type ModelMessage,
   streamText,
   StreamProviderError,
@@ -13,6 +14,7 @@ import { getChatModel } from "@/lib/chat/provider";
 import { buildSystemPrompt } from "@/lib/chat/prompt";
 import { checkChatRateLimit, getClientIp } from "@/lib/chat/ratelimit";
 import { chatRequestSchema } from "@/lib/chat/schemas";
+import { sendMessageToPritam, showProject } from "@/lib/chat/tools";
 
 export const runtime = "nodejs";
 export const maxDuration = 30;
@@ -118,6 +120,8 @@ export async function POST(request: Request) {
       messages,
       temperature: CHAT_TEMPERATURE,
       maxOutputTokens: CHAT_MAX_OUTPUT_TOKENS,
+      tools: { showProject, sendMessageToPritam },
+      stopWhen: isStepCount(4),
     });
 
     return createUIMessageStreamResponse({

@@ -1,6 +1,7 @@
 "use client";
 
 import { Suspense, lazy, useCallback, useRef } from "react";
+import { track } from "@vercel/analytics";
 
 import { useChatOpen } from "./ChatProvider";
 
@@ -28,7 +29,10 @@ export function ChatLauncher() {
         ref={buttonRef}
         id="chat-launcher-button"
         type="button"
-        onClick={openChat}
+        onClick={() => {
+          if (!isOpen) track("chat_opened");
+          openChat();
+        }}
         onMouseEnter={preload}
         onFocus={preload}
         aria-haspopup="dialog"
@@ -37,6 +41,8 @@ export function ChatLauncher() {
         className="fixed bottom-5 right-5 z-50 inline-flex size-13 items-center justify-center rounded-full bg-accent text-accent-foreground shadow-lg transition-transform duration-200 hover:scale-105 active:scale-95"
       >
         <svg
+          width="24"
+          height="24"
           viewBox="0 0 24 24"
           fill="none"
           stroke="currentColor"

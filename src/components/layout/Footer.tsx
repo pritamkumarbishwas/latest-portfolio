@@ -39,6 +39,11 @@ export function Footer() {
           </a>
         </div>
       </Container>
+      <div className="border-t border-border bg-muted/30 py-4 text-center text-xs text-muted-foreground">
+        <Container>
+          <strong>Privacy Note:</strong> Chat messages are sent to an AI provider to generate responses. Please do not enter sensitive information.
+        </Container>
+      </div>
     </footer>
   );
 }

@@ -2,6 +2,7 @@
 
 import { ArrowUp, Square } from "lucide-react";
 import { useRef, useState, type KeyboardEvent } from "react";
+import { track } from "@vercel/analytics";
 
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
@@ -22,6 +23,7 @@ export function ChatInput({ onSend, onStop, busy, maxLength }: ChatInputProps) {
 
   const submit = () => {
     if (!canSend) return;
+    track("chat_message_sent");
     onSend(trimmed);
     setValue("");
     textareaRef.current?.focus();
@@ -67,7 +69,7 @@ export function ChatInput({ onSend, onStop, busy, maxLength }: ChatInputProps) {
               size="sm"
               onClick={onStop}
               aria-label="Stop response"
-              className="size-9 rounded-full px-0"
+              className="size-11 rounded-full px-0"
             >
               <Square className="size-3.5" aria-hidden="true" />
             </Button>
@@ -77,7 +79,7 @@ export function ChatInput({ onSend, onStop, busy, maxLength }: ChatInputProps) {
               size="sm"
               disabled={!canSend}
               aria-label="Send message"
-              className="size-9 rounded-full px-0"
+              className="size-11 rounded-full px-0"
             >
               <ArrowUp className="size-4" aria-hidden="true" />
             </Button>

@@ -12,6 +12,7 @@
     "prompt:report": "node --conditions=react-server --import tsx scripts/chat-prompt-report.ts",
     "eval:chat": "node --import tsx scripts/eval-chat.ts",
     "test:e2e": "playwright test",
+    "test:unit": "node --import tsx --test tests/",
     "test:lighthouse": "lhci autorun"
   },
   "dependencies": {
@@ -26,6 +27,7 @@
     "@types/mdx": "^2.0.14",
     "@upstash/ratelimit": "^2.2.0",
     "@upstash/redis": "^1.39.0",
+    "@vercel/analytics": "^2.0.1",
     "ai": "^7.0.136",
     "clsx": "^2.1.1",
     "gray-matter": "^4.0.3",

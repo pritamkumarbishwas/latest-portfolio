@@ -4,13 +4,15 @@ import { useChat } from "@ai-sdk/react";
 import { DefaultChatTransport, type UIMessage } from "ai";
 import { RotateCcw, Trash2, X } from "lucide-react";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { track } from "@vercel/analytics";
 
 import knowledge from "@/content/chatbot-knowledge.json";
+import { getFollowUps } from "@/lib/chat/followups";
 import { MAX_CHAT_MESSAGES, MAX_CHAT_MESSAGE_LENGTH } from "@/lib/chat/limits";
 
 import { ChatInput } from "./ChatInput";
-import { MessageList } from "./MessageList";
-import { SuggestionChips } from "./SuggestionChips";
+import { MessageList, messageText } from "./MessageList";
+import { ResumeQuickAction, SuggestionChips } from "./SuggestionChips";
 
 const STORAGE_KEY = "portfolio-chat-v1";
 const STORED_MESSAGE_LIMIT = 20;
@@ -119,6 +121,26 @@ export default function ChatPanel({ onClose }: ChatPanelProps) {
   }, [messages]);
 
   useEffect(() => {
+    if (error) {
+      if (error.message.includes("429") || error.message.includes("wait a moment")) {
+        track("chat_rate_limited");
+      } else {
+        track("chat_error");
+      }
+    }
+  }, [error]);
+
+  const followUps = useMemo(() => {
+    if (status !== "ready" || messages.length === 0) return [];
+    const last = messages[messages.length - 1];
+    if (!last || last.role !== "assistant") return [];
+    const asked = messages
+      .filter((message) => message.role === "user")
+      .map(messageText);
+    return getFollowUps(messages.map(messageText).join("\n"), asked);
+  }, [messages, status]);
+
+  useEffect(() => {
     const previouslyFocused = document.activeElement;
     closeButtonRef.current?.focus();
 
@@ -218,7 +240,7 @@ export default function ChatPanel({ onClose }: ChatPanelProps) {
               onClick={handleClear}
               disabled={messages.length === 0}
               aria-label="Clear conversation"
-              className="inline-flex size-8 items-center justify-center rounded-full text-muted-foreground transition-colors hover:text-foreground disabled:pointer-events-none disabled:opacity-40"
+              className="inline-flex size-11 items-center justify-center rounded-full text-muted-foreground transition-colors hover:text-foreground disabled:pointer-events-none disabled:opacity-40"
             >
               <Trash2 className="size-4" aria-hidden="true" />
             </button>
@@ -227,7 +249,7 @@ export default function ChatPanel({ onClose }: ChatPanelProps) {
               type="button"
               onClick={onClose}
               aria-label="Close chat"
-              className="inline-flex size-8 items-center justify-center rounded-full text-muted-foreground transition-colors hover:text-foreground"
+              className="inline-flex size-11 items-center justify-center rounded-full text-muted-foreground transition-colors hover:text-foreground"
             >
               <X className="size-4" aria-hidden="true" />
             </button>
@@ -237,7 +259,16 @@ export default function ChatPanel({ onClose }: ChatPanelProps) {
         <MessageList messages={messages} status={status} />
 
         {messages.length === 0 ? (
-          <SuggestionChips onPick={handleSend} />
+          <>
+            <SuggestionChips onPick={handleSend} />
+            <ResumeQuickAction />
+          </>
+        ) : status === "ready" && followUps.length > 0 ? (
+          <SuggestionChips
+            onPick={handleSend}
+            questions={followUps}
+            ariaLabel="Follow-up suggestions"
+          />
         ) : null}
 
         {error ? (
@@ -263,6 +294,9 @@ export default function ChatPanel({ onClose }: ChatPanelProps) {
           busy={busy}
           maxLength={MAX_CHAT_MESSAGE_LENGTH}
         />
+        <div className="bg-muted/50 px-4 py-2 text-center text-[10px] text-muted-foreground">
+          Messages are sent to an AI provider. Please do not enter sensitive info.
+        </div>
       </div>
     </div>
   );
