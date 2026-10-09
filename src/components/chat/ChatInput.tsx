@@ -119,9 +119,6 @@ export function ChatInput({ onSend, onStop, busy, maxLength }: ChatInputProps) {
           )}
         </div>
       </div>
-      <p className="mt-2 hidden px-1 text-[11px] text-muted-foreground sm:block">
-        Enter to send · Shift + Enter for a new line
-      </p>
     </form>
   );
 }

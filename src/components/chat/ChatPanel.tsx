@@ -2,7 +2,7 @@
 
 import { useChat } from "@ai-sdk/react";
 import { DefaultChatTransport, type UIMessage } from "ai";
-import { CircleAlert, RotateCcw, ShieldCheck, Trash2, X } from "lucide-react";
+import { CircleAlert, Download, RotateCcw, ShieldCheck, Trash2, X } from "lucide-react";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { track } from "@vercel/analytics";
 
@@ -12,7 +12,7 @@ import { MAX_CHAT_MESSAGES, MAX_CHAT_MESSAGE_LENGTH } from "@/lib/chat/limits";
 
 import { ChatInput } from "./ChatInput";
 import { MessageList, messageText } from "./MessageList";
-import { ResumeQuickAction, SuggestionChips } from "./SuggestionChips";
+import { SuggestionChips } from "./SuggestionChips";
 
 const STORAGE_KEY = "portfolio-chat-v1";
 const STORED_MESSAGE_LIMIT = 20;
@@ -249,7 +249,17 @@ export default function ChatPanel({ onClose }: ChatPanelProps) {
               </p>
             </div>
           </div>
-          <div className="flex shrink-0 items-center gap-1">
+          <div className="flex shrink-0 items-center gap-1.5">
+            <a
+              href="/resume.pdf"
+              download
+              aria-label="Download resume"
+              title="Download resume"
+              className="inline-flex size-11 items-center justify-center gap-1.5 rounded-full border border-border bg-muted/50 text-accent-text transition-colors hover:border-accent-text/50 hover:bg-accent/10 sm:h-9 sm:w-auto sm:px-3"
+            >
+              <Download className="size-4 shrink-0" aria-hidden="true" />
+              <span className="hidden text-xs font-medium sm:inline">Resume</span>
+            </a>
             <button
               type="button"
               onClick={handleClear}
@@ -276,10 +286,7 @@ export default function ChatPanel({ onClose }: ChatPanelProps) {
         <MessageList messages={messages} status={status} />
 
         {messages.length === 0 ? (
-          <>
-            <SuggestionChips onPick={handleSend} />
-            <ResumeQuickAction />
-          </>
+          <SuggestionChips onPick={handleSend} />
         ) : status === "ready" && followUps.length > 0 ? (
           <SuggestionChips
             onPick={handleSend}
