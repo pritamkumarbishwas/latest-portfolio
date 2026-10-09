@@ -119,20 +119,47 @@ const availabilitySchema = z.strictObject({
   note: z.string().min(1),
 });
 
-const faqItemSchema = z.strictObject({
-  question: z.string().min(1),
-  answer: z.string().min(1),
-});
+/**
+ * One Q&A entry of the merged knowledge base (portfolio FAQ + HR screening).
+ * Maintained manually in src/content/chatbot-knowledge.json; malformed
+ * entries fail the build.
+ * - status "ready" = answer final; "needs-input" = prep note (empty answer + todo).
+ * - botVisible false = prep-only, never shown to the assistant.
+ */
+const knowledgeEntrySchema = z
+  .strictObject({
+    id: z.string().min(1).max(64),
+    category: z.string().min(1).max(64).optional(),
+    status: z.enum(["ready", "needs-input"]).optional().default("ready"),
+    botVisible: z.boolean().optional().default(true),
+    question: z.string().min(1).max(300),
+    keywords: z.array(z.string().min(1).max(80)).optional(),
+    answer: z.string().max(1000).default(""),
+    todo: z.string().max(500).optional(),
+  })
+  .superRefine((entry, ctx) => {
+    if (entry.status === "ready" && entry.answer.trim().length === 0) {
+      ctx.addIssue({
+        code: "custom",
+        path: ["answer"],
+        message: `Knowledge entry "${entry.id}" has status "ready" but an empty answer`,
+      });
+    }
+  });
 
 export const chatbotKnowledgeSchema = z.strictObject({
+  version: z.number().int().positive(),
+  contactEmail: z.email().optional(),
   persona: personaSchema,
   rules: rulesSchema,
   availability: availabilitySchema,
   unknowns: z.array(z.string().min(1)).min(1),
-  faq: z.array(faqItemSchema).min(1),
   suggestedQuestions: z.array(z.string().min(1)).min(1),
   fallbackMessage: z.string().min(1),
+  entries: z.array(knowledgeEntrySchema).min(1),
 });
+
+export type KnowledgeEntry = z.infer<typeof knowledgeEntrySchema>;
 
 const chatRoleSchema = z.enum(["user", "assistant"]);
 
@@ -191,6 +218,6 @@ export const chatRequestSchema = z.object({
  */
 export const portfolio = portfolioSchema.parse(portfolioJson);
 
-/** Validated chatbot configuration, parsed at module load. */
+/** Validated chatbot configuration (incl. the merged Q&A knowledge base). */
 export const chatbotKnowledge =
   chatbotKnowledgeSchema.parse(chatbotKnowledgeJson);

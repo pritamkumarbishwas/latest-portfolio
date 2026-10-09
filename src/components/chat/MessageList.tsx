@@ -101,16 +101,15 @@ function CopyButton({ text }: { text: string }) {
       aria-label={copied ? "Copied to clipboard" : "Copy message"}
       title={copied ? "Copied" : "Copy message"}
       className={cn(
-        "inline-flex w-fit items-center gap-1 rounded-full px-2 py-1 text-[11px] leading-none text-muted-foreground transition-colors hover:bg-muted hover:text-foreground focus-visible:ring-1 focus-visible:ring-accent-text/40",
+        "inline-flex w-fit items-center justify-center rounded-full p-1.5 text-muted-foreground transition-colors hover:bg-muted hover:text-foreground focus-visible:ring-1 focus-visible:ring-accent-text/40",
         copied && "text-emerald-600 dark:text-emerald-400",
       )}
     >
       {copied ? (
-        <Check className="size-3" aria-hidden="true" />
+        <Check className="size-3.5" aria-hidden="true" />
       ) : (
-        <Copy className="size-3" aria-hidden="true" />
+        <Copy className="size-3.5" aria-hidden="true" />
       )}
-      {copied ? "Copied" : "Copy"}
     </button>
   );
 }

@@ -12,13 +12,20 @@ const words = prompt.trim().split(/\s+/).length;
 const tokensByChars = Math.ceil(prompt.length / 4);
 const tokensByWords = Math.ceil(words * 1.3);
 
+const entries = chatbotKnowledge.entries;
+const botVisible = entries.filter(
+  (entry) =>
+    entry.botVisible && entry.status === "ready" && entry.answer.trim().length > 0,
+);
+
 console.log("System prompt report");
 console.log("====================");
 console.log(`characters:              ${prompt.length}`);
 console.log(`words:                   ${words}`);
 console.log(`approx tokens (chars/4): ${tokensByChars}`);
 console.log(`approx tokens (words×1.3): ${tokensByWords}`);
-console.log(`faq entries:             ${chatbotKnowledge.faq.length}`);
+console.log(`knowledge entries:       ${entries.length} total, ${botVisible.length} bot-visible`);
+console.log(`prep-only entries:       ${entries.length - botVisible.length}`);
 console.log(`suggested questions:     ${chatbotKnowledge.suggestedQuestions.length}`);
 console.log(`phone in source data:    ${phone}`);
 console.log(

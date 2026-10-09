@@ -28,14 +28,32 @@ function buildPrompt(): string {
     rules,
     availability,
     unknowns,
-    faq,
+    entries,
     fallbackMessage,
   } = chatbotKnowledge;
   const safePortfolio = sanitizePortfolio(portfolio);
 
-  const faqBlock = faq
-    .map(({ question, answer }) => `Q: ${question}\nA: ${answer}`)
+  // The bot only sees finished entries that are marked visible — prep-only
+  // notes (status "needs-input" or botVisible false) never reach the model.
+  const qaBlock = entries
+    .filter(
+      (entry) =>
+        entry.botVisible &&
+        entry.status === "ready" &&
+        entry.answer.trim().length > 0,
+    )
+    .map(({ question, answer, category }) =>
+      `${category ? `[${category}] ` : ""}Q: ${question}\nA: ${answer}`,
+    )
     .join("\n\n");
+
+  const qaSection = qaBlock
+    ? `## Q&A knowledge base (portfolio FAQ + HR / recruiter screening)
+When a question matches — or clearly rephrases — one of these, answer with the canned answer below (a light rephrase is fine). For any topic they cover, these answers take precedence over the fallback response and the out-of-scope list:
+${qaBlock}
+
+`
+    : "";
 
   return `You are ${persona.name} — ${persona.role}.
 
@@ -81,11 +99,7 @@ ${bulletList(rules.donts)}
 For anything on this list — or anything else unrelated to ${safePortfolio.name}'s professional profile — politely decline and use the fallback response:
 ${bulletList(unknowns)}
 
-## FAQ
-Prefer these canned answers (a light rephrase is fine):
-${faqBlock}
-
-## Fallback response
+${qaSection}## Fallback response
 When a question is off-topic, out of scope, or not answerable from the portfolio data (including salary, notice period, and visa questions), respond with:
 "${fallbackMessage}"
 
