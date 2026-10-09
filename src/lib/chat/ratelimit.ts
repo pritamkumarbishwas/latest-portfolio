@@ -1,7 +1,4 @@
 import "server-only";
-import { Ratelimit } from "@upstash/ratelimit";
-import { Redis } from "@upstash/redis";
-
 /**
  * Sliding-window rate limiting for /api/chat, keyed by client IP:
  * 10 requests per minute and 50 per day.
@@ -13,8 +10,6 @@ import { Redis } from "@upstash/redis";
 export const CHAT_RATE_PER_MINUTE = 10;
 export const CHAT_RATE_PER_DAY = 50;
 
-const MINUTE_WINDOW = "1 m";
-const DAY_WINDOW = "1 d";
 
 export type ChatRateLimitResult = {
   limited: boolean;
