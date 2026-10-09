@@ -201,7 +201,7 @@ export function MessageList({ messages, status }: MessageListProps) {
                 >
                   <div
                     className={cn(
-                      "max-w-[88%] whitespace-pre-wrap break-words rounded-2xl px-3.5 py-2 text-sm leading-relaxed",
+                      "max-w-[95%] whitespace-pre-wrap break-words rounded-2xl px-3.5 py-2 text-sm leading-relaxed",
                       isUser
                         ? "rounded-br-md bg-accent text-accent-foreground shadow-sm"
                         : "rounded-bl-md border border-border/60 bg-muted text-foreground",
