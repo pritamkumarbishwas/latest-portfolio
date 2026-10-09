@@ -48,7 +48,7 @@ export function Experience() {
                 </div>
               ) : null}
 
-              <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
+              <ul className="mt-4 space-y-1.5 text-sm text-muted-foreground">
                 {item.highlights.map((highlight) => (
                   <li key={highlight} className="flex gap-2">
                     <span aria-hidden="true" className="text-accent-text">

@@ -134,7 +134,7 @@ export default function AboutPage() {
             Problem <span className="font-serif italic">solving</span>
           </SectionHeading>
         </div>
-        <ul className="mt-8 max-w-2xl space-y-3 text-sm leading-relaxed text-muted-foreground md:text-base">
+        <ul className="mt-8 max-w-2xl space-y-2 text-sm leading-relaxed text-muted-foreground md:text-base">
           {achievements.map((achievement) => (
             <li key={achievement.text} className="flex gap-3">
               <span aria-hidden="true" className="text-accent-text">

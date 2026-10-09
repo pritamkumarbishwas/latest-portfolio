@@ -1,7 +1,7 @@
 "use client";
 
 import { useChat } from "@ai-sdk/react";
-import { DefaultChatTransport, type UIMessage } from "ai";
+import { DefaultChatTransport, type TextUIPart, type UIMessage } from "ai";
 import { CircleAlert, Download, RotateCcw, ShieldCheck, Trash2, X } from "lucide-react";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { track } from "@vercel/analytics";
@@ -95,7 +95,20 @@ export default function ChatPanel({ onClose }: ChatPanelProps) {
       new DefaultChatTransport({
         api: "/api/chat",
         prepareSendMessagesRequest: ({ messages }) => ({
-          body: { messages: messages.slice(-MAX_CHAT_MESSAGES) },
+          body: {
+            // /api/chat validates text parts only — strip tool/reasoning parts
+            // from history (and drop messages left with nothing) so a reply
+            // that rendered a card doesn't 400 the next request.
+            messages: messages
+              .slice(-MAX_CHAT_MESSAGES)
+              .map((message) => ({
+                ...message,
+                parts: message.parts.filter(
+                  (part): part is TextUIPart => part.type === "text",
+                ),
+              }))
+              .filter((message) => message.parts.length > 0),
+          },
         }),
       }),
     [],

@@ -103,7 +103,7 @@ export default async function CaseStudyPage({
           >
             Highlights
           </h2>
-          <ul className="mt-6 max-w-3xl space-y-3 text-base leading-relaxed text-muted-foreground">
+          <ul className="mt-6 max-w-3xl space-y-2 text-base leading-relaxed text-muted-foreground">
             {project.highlights.map((highlight) => (
               <li key={highlight} className="flex gap-3">
                 <span aria-hidden="true" className="text-accent-text">
