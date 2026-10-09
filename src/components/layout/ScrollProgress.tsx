@@ -35,7 +35,7 @@ export function ScrollProgress() {
   return (
     <div
       aria-hidden="true"
-      className="pointer-events-none fixed bottom-4 right-4 z-50 hidden items-center gap-4 rounded-full border border-border bg-card/85 py-2 pl-5 pr-2.5 shadow-lg backdrop-blur-xl lg:flex xl:bottom-6 xl:right-6 xl:gap-5 xl:py-2.5 xl:pl-6 xl:pr-3"
+      className="pointer-events-none fixed bottom-4 left-4 z-50 hidden items-center gap-4 rounded-full border border-border bg-card/85 py-2 pl-5 pr-2.5 shadow-lg backdrop-blur-xl lg:flex xl:bottom-6 xl:left-6 xl:gap-5 xl:py-2.5 xl:pl-6 xl:pr-3"
     >
       <span className="scroll-shine inline-block bg-clip-text text-xs font-bold uppercase tracking-[0.2em] text-transparent">
         Keep scrolling
