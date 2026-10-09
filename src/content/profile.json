@@ -407,6 +407,13 @@
   ],
   "education": [
     {
+      "institution": "Dr. D. Y. Patil Vidyapeeth (Centre for Online Learning)",
+      "period": "2026 – Present",
+      "degree": "Master of Computer Application (MCA)",
+      "detail": "SGPA: 9.6 (Sem-I)",
+      "location": "Pune, Maharashtra"
+    },
+    {
       "institution": "Bhupendra Narayan Mandal University",
       "period": "2017 – 2020",
       "degree": "Bachelor of Computer Applications (BCA)",

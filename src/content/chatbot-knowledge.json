@@ -131,9 +131,11 @@
         "education",
         "degree",
         "college",
-        "bca"
+        "bca",
+        "mca",
+        "master"
       ],
-      "answer": "He holds a Bachelor of Computer Applications (BCA) from Bhupendra Narayan Mandal University, Purnea, Bihar (2017–2020), with 76.6%."
+      "answer": "He is currently pursuing a Master of Computer Application (MCA) online at Dr. D. Y. Patil Vidyapeeth, Pune (SGPA 9.6 in Sem-I), and holds a Bachelor of Computer Applications (BCA) from Bhupendra Narayan Mandal University, Purnea, Bihar (2017–2020), with 76.6%."
     },
     {
       "id": "certifications",
