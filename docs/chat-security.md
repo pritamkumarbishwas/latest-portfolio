@@ -18,11 +18,7 @@ Protections, secrets hygiene, and incident steps for the AI chat
 
 ### Rate limiter backends
 
-- **Production (required):** Upstash Redis (`UPSTASH_REDIS_REST_URL` /
-  `UPSTASH_REDIS_REST_TOKEN`). If the vars are missing or Redis is unreachable
-  the route **fails closed** with a 503 — no unprotected traffic.
-- **Development (fallback):** in-memory sliding window, logged once as a
-  warning. Single process only; resets on restart.
+- **In-memory**: Uses a single-process sliding window (`src/lib/chat/ratelimit.ts`). It is memory-efficient but resets on cold starts and is not shared across serverless instances.
 
 ### Launcher visibility
 
@@ -33,8 +29,7 @@ at build time for static pages — toggling it requires a redeploy.
 ## Environment variables
 
 See `.env.example`. Required for production: `GROQ_API_KEY` (or
-`OPENAI_API_KEY`), `UPSTASH_REDIS_REST_URL`, `UPSTASH_REDIS_REST_TOKEN`,
-`SITE_URL`. Optional: `CHAT_PROVIDER`, `CHAT_ENABLED`.
+`OPENAI_API_KEY`), `SITE_URL`. Optional: `CHAT_PROVIDER`, `CHAT_ENABLED`.
 
 ## Provider spend cap
 
@@ -46,10 +41,7 @@ window). For hard spend control:
    *Usage*: enable spend/usage alerts where available. Review usage monthly.
 2. **OpenAI** (if `CHAT_PROVIDER=openai`) — platform.openai.com → *Billing*:
    set a **hard monthly budget** so a leaked key cannot run up a bill.
-3. **Upstash** — free tier (10k commands/day) covers well beyond the chat's
-   50 requests/IP/day (2 Redis commands per check). Set a usage alert in the
-   Upstash console.
-4. **Vercel** — `/api/chat` has `maxDuration = 30`; add a project spend cap
+3. **Vercel** — `/api/chat` has `maxDuration = 30`; add a project spend cap
    for functions if you use paid tier.
 
 ## Key rotation
@@ -62,7 +54,7 @@ Rotate on schedule (e.g. quarterly) or immediately after any suspicion:
    local `.env.local`.
 3. Redeploy (Vercel) / restart `npm run dev`.
 4. Revoke the old key in the Groq console.
-5. Repeat for `OPENAI_API_KEY`, `UPSTASH_*`, `RESEND_API_KEY` as needed.
+5. Repeat for `OPENAI_API_KEY`, `RESEND_API_KEY` as needed.
 
 ## If a key leaks
 
@@ -92,5 +84,4 @@ Rotate on schedule (e.g. quarterly) or immediately after any suspicion:
 
 **Action items for the owner:** (a) rotate the Groq and OpenAI keys, (b)
 amend commit `ee87bb4` (or `git reset --soft HEAD~1` and recommit) so the
-redacted `.env.example` is what lands on GitHub, (c) set `SITE_URL` +
-Upstash vars in Vercel.
+redacted `.env.example` is what lands on GitHub, (c) set `SITE_URL` in Vercel.

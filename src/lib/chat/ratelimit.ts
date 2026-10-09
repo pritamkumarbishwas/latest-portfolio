@@ -6,9 +6,8 @@ import { Redis } from "@upstash/redis";
  * Sliding-window rate limiting for /api/chat, keyed by client IP:
  * 10 requests per minute and 50 per day.
  *
- * Uses Upstash Redis when UPSTASH_REDIS_REST_URL/TOKEN are set (required in
- * production — the route fails closed without them). In development it falls
- * back to a single-process in-memory limiter and logs a warning once.
+ * Uses a single-process in-memory limiter. Note that this is not shared
+ * across serverless instances and state is lost on cold starts.
  */
 
 export const CHAT_RATE_PER_MINUTE = 10;
@@ -22,39 +21,6 @@ export type ChatRateLimitResult = {
   remaining: number;
   retryAfterSeconds: number;
 };
-
-export type Limiters = {
-  minute: Ratelimit;
-  day: Ratelimit;
-};
-
-let cachedLimiters: Limiters | null | undefined;
-
-function getUpstashLimiters(): Limiters | null {
-  if (cachedLimiters !== undefined) return cachedLimiters;
-
-  const url = process.env.UPSTASH_REDIS_REST_URL;
-  const token = process.env.UPSTASH_REDIS_REST_TOKEN;
-  if (!url || !token) {
-    cachedLimiters = null;
-    return null;
-  }
-
-  const redis = new Redis({ url, token });
-  cachedLimiters = {
-    minute: new Ratelimit({
-      redis,
-      limiter: Ratelimit.slidingWindow(CHAT_RATE_PER_MINUTE, MINUTE_WINDOW),
-      prefix: "chat:rl:min",
-    }),
-    day: new Ratelimit({
-      redis,
-      limiter: Ratelimit.slidingWindow(CHAT_RATE_PER_DAY, DAY_WINDOW),
-      prefix: "chat:rl:day",
-    }),
-  };
-  return cachedLimiters;
-}
 
 type MemoryBucket = {
   minute: number[];
@@ -77,7 +43,7 @@ function memoryLimit(ip: string): ChatRateLimitResult {
   if (!memoryWarned) {
     memoryWarned = true;
     console.warn(
-      "[chat] UPSTASH_REDIS_REST_URL/TOKEN not set — using an in-memory rate limiter. This is development-only; production fails closed until Upstash is configured.",
+      "[chat] Using an in-memory rate limiter. This is not shared across instances in production.",
     );
   }
 
@@ -133,53 +99,10 @@ function memoryLimit(ip: string): ChatRateLimitResult {
   };
 }
 
-function secondsUntil(resetMs: number): number {
-  return Math.max(1, Math.ceil((resetMs - Date.now()) / 1000));
-}
-
-async function upstashLimit(ip: string, limiters: Limiters): Promise<ChatRateLimitResult> {
-  const minute = await limiters.minute.limit(ip);
-  if (!minute.success) {
-    return { limited: true, remaining: 0, retryAfterSeconds: secondsUntil(minute.reset) };
-  }
-
-  const day = await limiters.day.limit(ip);
-  if (!day.success) {
-    return { limited: true, remaining: 0, retryAfterSeconds: secondsUntil(day.reset) };
-  }
-
-  return {
-    limited: false,
-    remaining: Math.min(minute.remaining, day.remaining),
-    retryAfterSeconds: 0,
-  };
-}
-
 /**
- * Checks the per-IP sliding windows. Throws when no limiter is available
- * (production without Upstash, or a Redis outage) — callers must fail closed.
+ * Checks the per-IP sliding windows.
  */
 export async function checkChatRateLimit(ip: string): Promise<ChatRateLimitResult> {
-  const limiters = getUpstashLimiters();
-
-  if (limiters) {
-    try {
-      return await upstashLimit(ip, limiters);
-    } catch (error) {
-      console.error(
-        "[chat] Upstash rate limiter error:",
-        error instanceof Error ? error.name : "unknown",
-      );
-      throw error;
-    }
-  }
-
-  if (process.env.NODE_ENV === "production") {
-    throw new Error(
-      "UPSTASH_REDIS_REST_URL and UPSTASH_REDIS_REST_TOKEN are required in production",
-    );
-  }
-
   return memoryLimit(ip);
 }
 
