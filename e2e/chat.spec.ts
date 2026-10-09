@@ -29,11 +29,15 @@ test.describe("chat assistant", () => {
     });
     await expect(dialog).toBeVisible();
     await expect(dialog).toHaveAttribute("aria-modal", "true");
-    await expect(dialog.getByText("AI assistant. Answers may be imperfect.")).toBeVisible();
+    await expect(dialog.getByText("AI answers may be imperfect")).toBeVisible();
     await expect(
       dialog.getByRole("group", { name: "Suggested questions" }),
     ).toBeVisible();
-    await expect(dialog.locator("#chat-input-counter")).toHaveText("0/500");
+    await expect(dialog.locator("#chat-input-counter")).toHaveCount(0);
+    await dialog
+      .getByRole("textbox", { name: "Message" })
+      .fill("a".repeat(400));
+    await expect(dialog.locator("#chat-input-counter")).toHaveText("400/500");
 
     await page.keyboard.press("Escape");
     await expect(dialog).toBeHidden();
@@ -378,5 +382,4 @@ test.describe("chat assistant", () => {
     await expect(newDialog.getByRole("log").getByText("Who are you?")).toBeVisible();
     await expect(newDialog.getByRole("log").getByText("I am an AI.")).toBeVisible();
   });
-}); 
- 
+});

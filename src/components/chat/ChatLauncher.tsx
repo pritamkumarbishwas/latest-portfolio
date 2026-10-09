@@ -38,7 +38,9 @@ export function ChatLauncher() {
         aria-haspopup="dialog"
         aria-expanded={isOpen}
         aria-label="Chat with Pritam's AI assistant"
-        className="fixed bottom-5 right-5 z-50 inline-flex size-13 items-center justify-center rounded-full bg-accent text-accent-foreground shadow-lg transition-transform duration-200 hover:scale-105 active:scale-95"
+        className={`fixed bottom-5 right-5 z-50 inline-flex size-13 items-center justify-center rounded-full bg-accent text-accent-foreground shadow-lg transition-[transform,opacity] duration-200 hover:scale-105 active:scale-95 ${
+          isOpen ? "pointer-events-none opacity-0" : "opacity-100"
+        }`}
       >
         <svg
           width="24"

@@ -14,19 +14,42 @@ export type ChatInputProps = {
   maxLength: number;
 };
 
+/** Grow the composer up to ~6 lines, then scroll internally. */
+const AUTO_GROW_MAX_PX = 152;
+/** Only surface the counter once the visitor is close to the limit. */
+const COUNTER_THRESHOLD = 0.8;
+
 export function ChatInput({ onSend, onStop, busy, maxLength }: ChatInputProps) {
   const [value, setValue] = useState("");
   const textareaRef = useRef<HTMLTextAreaElement>(null);
 
   const trimmed = value.trim();
   const canSend = trimmed.length > 0 && value.length <= maxLength && !busy;
+  const showCounter = value.length >= Math.floor(maxLength * COUNTER_THRESHOLD);
+  const atLimit = value.length >= maxLength;
+
+  const autoGrow = () => {
+    const element = textareaRef.current;
+    if (!element) return;
+    element.style.height = "auto";
+    element.style.height = `${Math.min(element.scrollHeight, AUTO_GROW_MAX_PX)}px`;
+  };
+
+  const handleChange = (next: string) => {
+    setValue(next);
+    autoGrow();
+  };
 
   const submit = () => {
     if (!canSend) return;
     track("chat_message_sent");
     onSend(trimmed);
     setValue("");
-    textareaRef.current?.focus();
+    const element = textareaRef.current;
+    if (element) {
+      element.style.height = "auto";
+      element.focus();
+    }
   };
 
   const handleKeyDown = (event: KeyboardEvent<HTMLTextAreaElement>) => {
@@ -42,9 +65,9 @@ export function ChatInput({ onSend, onStop, busy, maxLength }: ChatInputProps) {
         event.preventDefault();
         submit();
       }}
-      className="border-t border-border px-4 py-3"
+      className="border-t border-border bg-card p-4"
     >
-      <div className="flex items-end gap-2">
+      <div className="relative flex items-end gap-2 rounded-3xl border border-border bg-muted/40 p-1.5 transition-shadow focus-within:border-accent-text/40 focus-within:ring-2 focus-within:ring-accent-text/15">
         <label htmlFor="chat-input" className="sr-only">
           Message
         </label>
@@ -52,16 +75,26 @@ export function ChatInput({ onSend, onStop, busy, maxLength }: ChatInputProps) {
           ref={textareaRef}
           id="chat-input"
           value={value}
-          onChange={(event) => setValue(event.target.value)}
+          onChange={(event) => handleChange(event.target.value)}
           onKeyDown={handleKeyDown}
           disabled={busy}
           maxLength={maxLength}
-          rows={2}
+          rows={1}
           placeholder="Ask about Pritam…"
-          className="min-h-16 flex-1 resize-none py-2.5"
-          aria-describedby="chat-input-counter"
+          className="max-h-[9.5rem] min-h-11 flex-1 resize-none overflow-y-auto border-0 bg-transparent px-3 py-3 focus-visible:ring-0 focus-visible:ring-offset-0"
+          aria-describedby={showCounter ? "chat-input-counter" : undefined}
         />
-        <div className="flex flex-col items-center gap-1.5">
+        <div className="flex shrink-0 items-center gap-2 pb-1 pr-1">
+          {showCounter ? (
+            <span
+              id="chat-input-counter"
+              className={`text-[0.65rem] tabular-nums ${
+                atLimit ? "text-red-500" : "text-muted-foreground"
+              }`}
+            >
+              {value.length}/{maxLength}
+            </span>
+          ) : null}
           {busy ? (
             <Button
               type="button"
@@ -69,9 +102,9 @@ export function ChatInput({ onSend, onStop, busy, maxLength }: ChatInputProps) {
               size="sm"
               onClick={onStop}
               aria-label="Stop response"
-              className="size-11 rounded-full px-0"
+              className="size-11 rounded-full bg-background shadow-sm hover:bg-muted sm:size-9"
             >
-              <Square className="size-3.5" aria-hidden="true" />
+              <Square className="size-3.5 text-foreground" aria-hidden="true" />
             </Button>
           ) : (
             <Button
@@ -79,19 +112,16 @@ export function ChatInput({ onSend, onStop, busy, maxLength }: ChatInputProps) {
               size="sm"
               disabled={!canSend}
               aria-label="Send message"
-              className="size-11 rounded-full px-0"
+              className="size-11 rounded-full shadow-sm transition-transform active:scale-95 sm:size-9"
             >
               <ArrowUp className="size-4" aria-hidden="true" />
             </Button>
           )}
-          <span
-            id="chat-input-counter"
-            className="text-[0.65rem] tabular-nums text-muted-foreground"
-          >
-            {value.length}/{maxLength}
-          </span>
         </div>
       </div>
+      <p className="mt-2 hidden px-1 text-[11px] text-muted-foreground sm:block">
+        Enter to send · Shift + Enter for a new line
+      </p>
     </form>
   );
 }

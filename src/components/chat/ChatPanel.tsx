@@ -2,7 +2,7 @@
 
 import { useChat } from "@ai-sdk/react";
 import { DefaultChatTransport, type UIMessage } from "ai";
-import { RotateCcw, Trash2, X } from "lucide-react";
+import { CircleAlert, RotateCcw, ShieldCheck, Trash2, X } from "lucide-react";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { track } from "@vercel/analytics";
 
@@ -210,12 +210,12 @@ export default function ChatPanel({ onClose }: ChatPanelProps) {
   const busy = status === "submitted" || status === "streaming";
 
   return (
-    <div className="fixed inset-0 z-[60] sm:flex sm:items-end sm:justify-end">
+    <div className="fixed inset-0 z-[60]">
       <button
         type="button"
         aria-label="Close chat"
         onClick={onClose}
-        className="absolute inset-0 bg-background/60 sm:hidden"
+        className="absolute inset-0 bg-background/55 backdrop-blur-sm motion-safe:animate-[reveal-fade_0.2s_ease-out_both]"
         tabIndex={-1}
       />
       <div
@@ -223,16 +223,31 @@ export default function ChatPanel({ onClose }: ChatPanelProps) {
         role="dialog"
         aria-modal="true"
         aria-labelledby={TITLE_ID}
-        className="relative flex h-dvh w-full flex-col overflow-hidden border border-border bg-card text-card-foreground shadow-lg motion-safe:animate-[reveal-up_0.25s_ease-out_both] sm:mb-24 sm:mr-4 sm:h-auto sm:max-h-[min(36rem,calc(100dvh-7rem))] sm:w-[24rem] sm:rounded-xl"
+        className="absolute inset-0 flex flex-col overflow-hidden bg-card text-card-foreground shadow-2xl motion-safe:animate-[panel-in_0.28s_cubic-bezier(0.22,1,0.36,1)_both] sm:inset-auto sm:bottom-6 sm:right-6 sm:h-[min(80dvh,44rem)] sm:max-h-[calc(100dvh-7rem)] sm:w-[min(30rem,calc(100vw-3rem))] sm:rounded-3xl sm:border sm:border-border sm:bg-card/95 sm:backdrop-blur-xl sm:shadow-2xl"
       >
-        <header className="flex items-start justify-between gap-3 border-b border-border px-4 py-3">
-          <div>
-            <h2 id={TITLE_ID} className="font-display text-sm font-semibold">
-              {knowledge.persona.name}
-            </h2>
-            <p className="text-xs text-muted-foreground">
-              AI assistant. Answers may be imperfect.
-            </p>
+        <header className="flex items-center justify-between gap-3 border-b border-border bg-card/80 px-4 pb-3 pt-[max(0.75rem,env(safe-area-inset-top))] backdrop-blur-sm sm:pt-3">
+          <div className="flex min-w-0 items-center gap-3">
+            <div
+              className="relative flex size-10 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-accent to-accent-hover text-lg text-accent-foreground shadow-sm ring-1 ring-accent/30"
+              aria-hidden="true"
+            >
+              <span>✨</span>
+              <span
+                className="absolute bottom-0 right-0 size-2.5 rounded-full bg-emerald-500 ring-2 ring-card"
+                title="Online"
+              />
+            </div>
+            <div className="min-w-0">
+              <h2
+                id={TITLE_ID}
+                className="truncate font-display text-sm font-semibold leading-none"
+              >
+                {knowledge.persona.name}
+              </h2>
+              <p className="mt-1 truncate text-xs text-muted-foreground">
+                Online · AI answers may be imperfect
+              </p>
+            </div>
           </div>
           <div className="flex shrink-0 items-center gap-1">
             <button
@@ -240,7 +255,8 @@ export default function ChatPanel({ onClose }: ChatPanelProps) {
               onClick={handleClear}
               disabled={messages.length === 0}
               aria-label="Clear conversation"
-              className="inline-flex size-11 items-center justify-center rounded-full text-muted-foreground transition-colors hover:text-foreground disabled:pointer-events-none disabled:opacity-40"
+              title="Clear conversation"
+              className="inline-flex size-11 items-center justify-center rounded-full text-muted-foreground transition-colors hover:bg-muted hover:text-foreground disabled:pointer-events-none disabled:opacity-40 sm:size-9"
             >
               <Trash2 className="size-4" aria-hidden="true" />
             </button>
@@ -249,7 +265,8 @@ export default function ChatPanel({ onClose }: ChatPanelProps) {
               type="button"
               onClick={onClose}
               aria-label="Close chat"
-              className="inline-flex size-11 items-center justify-center rounded-full text-muted-foreground transition-colors hover:text-foreground"
+              title="Close chat"
+              className="inline-flex size-11 items-center justify-center rounded-full text-muted-foreground transition-colors hover:bg-muted hover:text-foreground sm:size-9"
             >
               <X className="size-4" aria-hidden="true" />
             </button>
@@ -274,13 +291,19 @@ export default function ChatPanel({ onClose }: ChatPanelProps) {
         {error ? (
           <div
             role="alert"
-            className="mx-4 mb-2 flex items-center justify-between gap-3 rounded-lg border border-border bg-muted px-3 py-2 text-xs text-muted-foreground"
+            className="mx-4 mb-2 flex items-start justify-between gap-3 rounded-xl border border-red-500/30 bg-red-500/10 px-3 py-2.5 text-xs motion-safe:animate-[message-in_0.2s_ease-out_both]"
           >
-            <span>{friendlyErrorMessage(error.message)}</span>
+            <span className="flex items-start gap-2 text-muted-foreground">
+              <CircleAlert
+                className="mt-0.5 size-3.5 shrink-0 text-red-500 dark:text-red-400"
+                aria-hidden="true"
+              />
+              <span>{friendlyErrorMessage(error.message)}</span>
+            </span>
             <button
               type="button"
               onClick={handleRetry}
-              className="inline-flex items-center gap-1 font-medium text-accent-text hover:underline"
+              className="inline-flex shrink-0 items-center gap-1 rounded-full border border-red-500/40 px-2.5 py-1 font-medium text-red-600 transition-colors hover:bg-red-500/15 dark:text-red-400"
             >
               <RotateCcw className="size-3.5" aria-hidden="true" />
               Retry
@@ -294,8 +317,9 @@ export default function ChatPanel({ onClose }: ChatPanelProps) {
           busy={busy}
           maxLength={MAX_CHAT_MESSAGE_LENGTH}
         />
-        <div className="bg-muted/50 px-4 py-2 text-center text-[10px] text-muted-foreground">
-          Messages are sent to an AI provider. Please do not enter sensitive info.
+        <div className="flex items-center justify-center gap-1.5 bg-muted/40 px-4 py-2 pb-[max(0.5rem,env(safe-area-inset-bottom))] text-center text-[10px] text-muted-foreground">
+          <ShieldCheck className="size-3 shrink-0" aria-hidden="true" />
+          <span>Messages are sent to an AI provider. Please do not enter sensitive info.</span>
         </div>
       </div>
     </div>
