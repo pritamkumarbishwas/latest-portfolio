@@ -112,9 +112,9 @@ export default function AboutPage() {
             Where I <span className="font-serif italic">studied</span>
           </SectionHeading>
         </div>
-        <div className="mt-8 max-w-2xl">
+        <div className="mt-8 max-w-4xl ">
           {education.map((item) => (
-            <Card key={item.institution}>
+            <Card key={item.institution} className="mt-4">
               <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
                 <h3 className="font-display tracking-tight">
                   {item.institution}
