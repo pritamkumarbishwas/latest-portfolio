@@ -101,9 +101,8 @@ function CopyButton({ text }: { text: string }) {
       aria-label={copied ? "Copied to clipboard" : "Copy message"}
       title={copied ? "Copied" : "Copy message"}
       className={cn(
-        "inline-flex w-fit items-center gap-1 rounded-full px-2 py-1 text-[11px] leading-none transition-opacity duration-150 hover:text-foreground focus-visible:opacity-100 [@media(pointer:coarse)]:opacity-100",
-        "text-muted-foreground opacity-0 group-hover:opacity-100",
-        copied && "text-emerald-600 opacity-100 dark:text-emerald-400",
+        "inline-flex w-fit items-center gap-1 rounded-full px-2 py-1 text-[11px] leading-none text-muted-foreground transition-colors hover:bg-muted hover:text-foreground focus-visible:ring-1 focus-visible:ring-accent-text/40",
+        copied && "text-emerald-600 dark:text-emerald-400",
       )}
     >
       {copied ? (
@@ -240,7 +239,7 @@ export function MessageList({ messages, status }: MessageListProps) {
                 </div>
               ) : null}
               {nodes}
-              {!isUser && fullText.trim() ? (
+              {fullText.trim() ? (
                 <div className="-mt-1 flex justify-end pr-1">
                   <CopyButton text={fullText} />
                 </div>
