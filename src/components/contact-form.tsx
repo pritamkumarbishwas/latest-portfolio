@@ -118,7 +118,7 @@ export function ContactForm() {
             id="contact-name"
             type="text"
             autoComplete="name"
-            placeholder="Ada Lovelace"
+            placeholder="John Doe"
             required
             className="mt-2"
             aria-invalid={errors.name ? true : undefined}
@@ -140,7 +140,7 @@ export function ContactForm() {
             id="contact-email"
             type="email"
             autoComplete="email"
-            placeholder="ada@example.com"
+            placeholder="john@example.com"
             required
             className="mt-2"
             aria-invalid={errors.email ? true : undefined}
@@ -168,7 +168,7 @@ export function ContactForm() {
         <Textarea
           id="contact-message"
           rows={6}
-          placeholder="Tell me about the project, the timeline, and how I can help…"
+          placeholder="Briefly describe your project, timeline, or the role you're hiring for..."
           required
           className="mt-2"
           aria-invalid={errors.message ? true : undefined}

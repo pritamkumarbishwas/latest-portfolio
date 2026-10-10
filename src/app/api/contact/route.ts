@@ -1,5 +1,4 @@
 import { NextResponse } from "next/server";
-import { Resend } from "resend";
 import { checkRateLimit } from "@/lib/rate-limit";
 import { contactFormSchema } from "@/lib/schemas";
 
@@ -9,6 +8,47 @@ function clientIp(request: Request): string {
   const forwarded = request.headers.get("x-forwarded-for");
   if (forwarded) return forwarded.split(",")[0]?.trim() || "unknown";
   return "unknown";
+}
+
+type SendEmailParams = {
+  to: string;
+  toName?: string;
+  subject: string;
+  html: string;
+  replyTo?: { email: string; name?: string };
+};
+
+async function sendEmail({ to, toName, subject, html, replyTo }: SendEmailParams) {
+  const payload: any = {
+    sender: {
+      name: process.env.BREVO_SENDER_NAME || "Portfolio Contact Form",
+      email: process.env.BREVO_SENDER_EMAIL,
+    },
+    to: [{ email: to, name: toName }],
+    subject,
+    htmlContent: html,
+  };
+
+  if (replyTo) {
+    payload.replyTo = replyTo;
+  }
+
+  const res = await fetch("https://api.brevo.com/v3/smtp/email", {
+    method: "POST",
+    headers: {
+      "api-key": process.env.BREVO_API_KEY!,
+      "Content-Type": "application/json",
+      accept: "application/json",
+    },
+    body: JSON.stringify(payload),
+  });
+
+  if (!res.ok) {
+    const error = await res.text();
+    throw new Error(`Brevo error ${res.status}: ${error}`);
+  }
+
+  return res.json();
 }
 
 export async function POST(request: Request) {
@@ -65,9 +105,11 @@ export async function POST(request: Request) {
 
   const { name, email, message } = parsed.data;
 
-  const apiKey = process.env.RESEND_API_KEY;
+  const apiKey = process.env.BREVO_API_KEY;
+  const senderEmail = process.env.BREVO_SENDER_EMAIL;
   const to = process.env.CONTACT_TO_EMAIL;
-  if (!apiKey || !to) {
+  
+  if (!apiKey || !to || !senderEmail) {
     return NextResponse.json(
       {
         ok: false,
@@ -78,17 +120,18 @@ export async function POST(request: Request) {
     );
   }
 
-  const resend = new Resend(apiKey);
-  const { error } = await resend.emails.send({
-    from: process.env.RESEND_FROM_EMAIL ?? "Portfolio <onboarding@resend.dev>",
-    to: [to],
-    replyTo: email,
-    subject: `Portfolio contact from ${name}`,
-    text: `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`,
-  });
-
-  if (error) {
-    console.error("[contact] resend failed:", error);
+  try {
+    await sendEmail({
+      to,
+      subject: `Portfolio contact from ${name}`,
+      html: `<p><strong>Name:</strong> ${name}</p>
+             <p><strong>Email:</strong> ${email}</p>
+             <p><strong>Message:</strong></p>
+             <p>${message.replace(/\n/g, '<br/>')}</p>`,
+      replyTo: { email, name },
+    });
+  } catch (error) {
+    console.error("[contact] brevo failed:", error);
     return NextResponse.json(
       {
         ok: false,
