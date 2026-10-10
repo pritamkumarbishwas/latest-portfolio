@@ -293,8 +293,9 @@
         "Next.js",
         "Vue.js",
         "Redux Toolkit",
-        "RTK Query",
-        "Tailwind CSS"
+        "Tailwind CSS",
+        "MUI",
+        "RTK Query"
       ]
     },
     {
@@ -303,12 +304,10 @@
         "Node.js",
         "Express.js",
         "REST APIs",
+        "WebSockets",
         "Asynchronous APIs",
         "Webhooks",
-        "Cron Jobs",
-        "FastAPI",
-        "Pydantic",
-        "Uvicorn"
+        "Cron Jobs"
       ]
     },
     {
@@ -326,16 +325,17 @@
       "skills": [
         "PyMuPDF",
         "python-docx",
-        "Jinja2"
+        "Jinja2",
+        "Motor"
       ]
     },
     {
       "category": "Databases",
       "skills": [
-        "MySQL (SQL)",
-        "MongoDB (NoSQL)",
+        "MySQL",
         "PostgreSQL",
-        "Motor (MongoDB)"
+        "MongoDB",
+        "Redis"
       ]
     },
     {
@@ -352,9 +352,10 @@
       "skills": [
         "Git",
         "GitHub",
+        "VS Code",
         "Postman",
         "Vite",
-        "Command Line"
+        "Linux CLI"
       ]
     },
     {
@@ -362,35 +363,37 @@
       "skills": [
         "Agile / Scrum",
         "Code Review",
-        "Git Branching Workflows",
-        "Merge Conflict Resolution"
+        "Git Workflows"
       ]
     },
     {
       "category": "Core Concepts",
       "skills": [
-        "Data Structures and Algorithms",
-        "Asynchronous State Management",
-        "Application Optimization",
-        "Code Splitting",
-        "Lazy Loading",
-        "Caching Strategies",
+        "Data Structures & Algorithms",
+        "System Architecture",
         "API Optimization",
         "Query Optimization",
-        "Search Engine Optimization (SEO)",
+        "Caching Strategies",
+        "SEO",
         "Semantic HTML"
       ]
     },
     {
       "category": "DevOps & Testing",
       "skills": [
-        "Redis",
         "Docker",
         "Jest",
         "React Testing Library",
         "CI/CD",
-        "Jenkins",
-        "MUI"
+        "Jenkins"
+      ]
+    },
+    {
+      "category": "Familiar",
+      "skills": [
+        "FastAPI",
+        "Pydantic",
+        "Uvicorn"
       ]
     }
   ],
