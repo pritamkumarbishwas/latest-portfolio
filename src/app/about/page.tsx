@@ -173,7 +173,7 @@ export default function AboutPage() {
         </ul>
 
         <div className="mt-16 flex flex-wrap items-center gap-4 border-t border-border pt-8">
-          <a href="/resume.pdf" download className={buttonVariants()}>
+          <a href="/resume.pdf" download={`Pritam_kumar_bishwas_${new Date().toISOString().split('T')[0]}.pdf`} className={buttonVariants()}>
             <Download className="size-4" aria-hidden="true" />
             Download resume
           </a>

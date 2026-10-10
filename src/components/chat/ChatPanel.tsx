@@ -262,7 +262,7 @@ export default function ChatPanel({ onClose }: ChatPanelProps) {
           <div className="flex shrink-0 items-center gap-1.5">
             <a
               href="/resume.pdf"
-              download
+              download={`Pritam_kumar_bishwas_${new Date().toISOString().split('T')[0]}.pdf`}
               aria-label="Download resume"
               title="Download resume"
               className="inline-flex size-11 items-center justify-center gap-1.5 rounded-full border border-border bg-muted/50 text-accent-text transition-colors hover:border-accent-text/50 hover:bg-accent/10 sm:h-9 sm:w-auto sm:px-3"
