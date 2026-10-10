@@ -296,7 +296,8 @@
         "Tailwind CSS",
         "MUI",
         "RTK Query",
-        "Radix UI"
+        "Radix UI",
+        "React Hook Form"
       ]
     },
     {
@@ -317,6 +318,7 @@
       "skills": [
         "Groq API",
         "OpenAI API",
+        "Vercel AI SDK",
         "Prompt Engineering",
         "RAG",
         "Embeddings"
@@ -337,12 +339,14 @@
         "MySQL",
         "PostgreSQL",
         "MongoDB",
-        "Redis"
+        "Redis",
+        "Mongoose"
       ]
     },
     {
       "category": "Security",
       "skills": [
+        "NextAuth.js",
         "JWT Authentication",
         "Role-Based Access Control",
         "CSRF Protection",
@@ -358,6 +362,7 @@
         "Postman",
         "Vite",
         "Webpack",
+        "Zod",
         "Linux CLI"
       ]
     },
@@ -374,6 +379,7 @@
       "skills": [
         "Data Structures & Algorithms",
         "System Architecture",
+        "MVC Architecture",
         "API Optimization",
         "Query Optimization",
         "Caching Strategies",
