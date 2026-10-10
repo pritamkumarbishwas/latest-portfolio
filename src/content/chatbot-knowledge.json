@@ -65,7 +65,7 @@
         "introduction",
         "about"
       ],
-      "answer": "Pritam is a full-stack engineer with 3+ years of experience building scalable web applications with React.js, Next.js, Vue.js, Node.js, Express.js, and TypeScript, including work on live fintech and e-learning platforms."
+      "answer": "Pritam is a full-stack engineer with 3+ years of experience building scalable web applications and integrating AI tools using React.js, Next.js, Vue.js, Node.js, and Python, including work on live fintech and e-learning platforms."
     },
     {
       "id": "current-role",
@@ -119,7 +119,7 @@
         "skills",
         "tools"
       ],
-      "answer": "Frontend: React.js, Next.js, Vue.js, Redux Toolkit, Tailwind CSS. Backend: Node.js, Express.js, FastAPI, REST APIs. Databases: MySQL, MongoDB, PostgreSQL. AI: Groq and OpenAI APIs, RAG, and Embeddings. He also works with TypeScript, Python, Git, Docker, and CI/CD."
+      "answer": "Frontend: React.js, Next.js, Vue.js, Tailwind CSS, Radix UI. Backend: Node.js, Express.js, REST APIs, SSE. Databases: MySQL, MongoDB, Redis, Mongoose. Next.js Ecosystem: App Router, RSC, Server Actions, ISR. AI: Vercel AI SDK, Groq/OpenAI APIs. He also handles complex integrations like Razorpay, PayU, PhonePe, and WebRTC."
     },
     {
       "id": "education",
@@ -191,7 +191,7 @@
         "tell me about",
         "who is"
       ],
-      "answer": "A full-stack engineer with 3+ years of experience building scalable web apps with React, Next.js, Vue, Node.js and TypeScript. He currently works at Definedge Solution on live fintech and e-learning platforms, and previously worked as a freelance full-stack developer and a backend developer. He has also built AI tools, including a multi-LLM chat app and an AI resume builder."
+      "answer": "A full-stack engineer with 3+ years of experience building scalable web apps and AI-native tools with React, Next.js, Node.js and Python. He currently works at Definedge Solution on live fintech and e-learning platforms, and previously worked as a freelance developer. He has also built multi-LLM chat apps and an AI resume builder."
     },
     {
       "id": "years-of-experience",
