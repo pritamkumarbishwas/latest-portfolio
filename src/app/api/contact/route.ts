@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import nodemailer from "nodemailer";
 import { checkRateLimit } from "@/lib/rate-limit";
 import { contactFormSchema } from "@/lib/schemas";
 
@@ -36,32 +37,25 @@ async function sendEmail(
   config: BrevoConfig,
   { to, subject, html, replyTo }: SendEmailParams,
 ) {
-  const payload: Record<string, unknown> = {
-    sender: { name: config.senderName, email: config.senderEmail },
-    to: [{ email: to }],
-    subject,
-    htmlContent: html,
-  };
-
-  if (replyTo) payload.replyTo = replyTo;
-
-  const res = await fetch("https://api.brevo.com/v3/smtp/email", {
-    method: "POST",
-    headers: {
-      "api-key": config.apiKey,
-      "Content-Type": "application/json",
-      accept: "application/json",
+  const transporter = nodemailer.createTransport({
+    host: "smtp-relay.brevo.com",
+    port: 587,
+    secure: false, // true for 465, false for other ports
+    auth: {
+      user: process.env.BREVO_SMTP_USER,
+      pass: config.apiKey, // using the API key or SMTP key provided
     },
-    body: JSON.stringify(payload),
-    signal: AbortSignal.timeout(10_000), // 10s timeout
   });
 
-  if (!res.ok) {
-    const errorText = await res.text();
-    throw new Error(`Brevo error ${res.status}: ${errorText}`);
-  }
+  await transporter.sendMail({
+    from: `"${config.senderName}" <${config.senderEmail}>`,
+    to,
+    replyTo: replyTo ? `"${replyTo.name || ''}" <${replyTo.email}>` : undefined,
+    subject,
+    html,
+  });
 
-  return res.json() as Promise<{ messageId?: string }>;
+  return { messageId: "nodemailer-sent" };
 }
 
 export async function POST(request: Request) {
