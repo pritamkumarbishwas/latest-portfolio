@@ -3,6 +3,8 @@ import nodemailer from "nodemailer";
 import { checkRateLimit } from "@/lib/rate-limit";
 import { contactFormSchema } from "@/lib/schemas";
 
+export const runtime = "nodejs";
+
 function clientIp(request: Request): string {
   const forwarded = request.headers.get("x-forwarded-for");
   if (forwarded) return forwarded.split(",")[0]?.trim() || "unknown";
@@ -21,6 +23,7 @@ function escapeHtml(value: string): string {
 }
 
 type BrevoConfig = {
+  smtpUser: string;
   apiKey: string;
   senderEmail: string;
   senderName: string;
@@ -40,22 +43,28 @@ async function sendEmail(
   const transporter = nodemailer.createTransport({
     host: "smtp-relay.brevo.com",
     port: 587,
-    secure: false, // true for 465, false for other ports
+    secure: false, // STARTTLS on 587
+    requireTLS: true,
     auth: {
-      user: process.env.BREVO_SMTP_USER,
-      pass: config.apiKey, // using the API key or SMTP key provided
+      user: config.smtpUser,
+      pass: config.apiKey,
     },
+    connectionTimeout: 10_000,
+    greetingTimeout: 10_000,
+    socketTimeout: 15_000,
   });
 
-  await transporter.sendMail({
-    from: `"${config.senderName}" <${config.senderEmail}>`,
+  const info = await transporter.sendMail({
+    from: { name: config.senderName, address: config.senderEmail },
     to,
-    replyTo: replyTo ? `"${replyTo.name || ''}" <${replyTo.email}>` : undefined,
+    replyTo: replyTo
+      ? { name: replyTo.name || "", address: replyTo.email }
+      : undefined,
     subject,
     html,
   });
 
-  return { messageId: "nodemailer-sent" };
+  return { messageId: info.messageId };
 }
 
 export async function POST(request: Request) {
@@ -110,15 +119,19 @@ export async function POST(request: Request) {
   const { name, email, message } = parsed.data;
 
   const apiKey = process.env.BREVO_API_KEY;
+  const smtpUser = process.env.BREVO_SMTP_USER;
   const senderEmail = process.env.BREVO_SENDER_EMAIL;
   const to = process.env.CONTACT_TO_EMAIL;
 
   console.log("apiKey==========", apiKey)
+  console.log("smtpUser==========", smtpUser)
   console.log("senderEmail==========", senderEmail)
   console.log("to==========", to)
 
-  if (!apiKey || !to || !senderEmail) {
-    console.error("[contact] missing env: BREVO_API_KEY / BREVO_SENDER_EMAIL / CONTACT_TO_EMAIL");
+  if (!apiKey || !smtpUser || !to || !senderEmail) {
+    console.error(
+      "[contact] missing env: BREVO_API_KEY / BREVO_SMTP_USER / BREVO_SENDER_EMAIL / CONTACT_TO_EMAIL",
+    );
     return NextResponse.json(
       {
         ok: false,
@@ -134,34 +147,36 @@ export async function POST(request: Request) {
   const safeMessage = escapeHtml(message).replace(/\r?\n/g, "<br/>");
   const subjectName = name.replace(/[\r\n]+/g, " ").slice(0, 80);
 
-  // try {
-  await sendEmail(
-    {
-      apiKey,
-      senderEmail,
-      senderName: process.env.BREVO_SENDER_NAME || "Portfolio Contact Form",
-    },
-    {
-      to,
-      subject: `Portfolio contact from ${subjectName}`,
-      html: `<p><strong>Name:</strong> ${safeName}</p>
+  try {
+    const result = await sendEmail(
+      {
+        smtpUser,
+        apiKey,
+        senderEmail,
+        senderName: process.env.BREVO_SENDER_NAME || "Portfolio Contact Form",
+      },
+      {
+        to,
+        subject: `Portfolio contact from ${subjectName}`,
+        html: `<p><strong>Name:</strong> ${safeName}</p>
                <p><strong>Email:</strong> ${safeEmail}</p>
                <p><strong>Message:</strong></p>
                <p>${safeMessage}</p>`,
-      replyTo: { email, name: subjectName },
-    },
-  );
-  // } catch (error) {
-  //   console.error("[contact] brevo failed:", error);
-  //   return NextResponse.json(
-  //     {
-  //       ok: false,
-  //       error:
-  //         "Couldn’t send your message right now — please try again or use the direct email link.",
-  //     },
-  //     { status: 502 },
-  //   );
-  // }
+        replyTo: { email, name: subjectName },
+      },
+    );
+    console.log("sent==========", result);
+  } catch (error) {
+    console.error("[contact] brevo failed:", error);
+    return NextResponse.json(
+      {
+        ok: false,
+        error:
+          "Couldn’t send your message right now — please try again or use the direct email link.",
+      },
+      { status: 502 },
+    );
+  }
 
   return NextResponse.json({ ok: true });
 }
