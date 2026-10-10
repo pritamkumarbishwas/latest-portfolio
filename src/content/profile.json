@@ -374,17 +374,22 @@
       "skills": [
         "Data Structures & Algorithms",
         "System Architecture",
-        "React Server Components (RSC)",
-        "Next.js App Router",
-        "Server Actions",
-        "Incremental Static Regeneration (ISR)",
-        "Server-Side Rendering (SSR)",
-        "Static Site Generation (SSG)",
         "API Optimization",
         "Query Optimization",
         "Caching Strategies",
         "SEO",
         "Semantic HTML"
+      ]
+    },
+    {
+      "category": "Next.js Ecosystem",
+      "skills": [
+        "React Server Components (RSC)",
+        "Next.js App Router",
+        "Server Actions",
+        "Server-Side Rendering (SSR)",
+        "Static Site Generation (SSG)",
+        "Incremental Static Regeneration (ISR)"
       ]
     },
     {
