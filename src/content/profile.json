@@ -86,7 +86,7 @@
     {
       "title": "Gurukul",
       "slug": "gurukul",
-      "summary": "Full-stack e-learning platform covering course discovery, enrollment, online learning, books, videos, events, dashboards, payments, and secure content access.",
+      "summary": "(Company Product) Full-stack e-learning platform covering course discovery, enrollment, online learning, books, videos, events, dashboards, payments, and secure content access.",
       "cover": "/work/gurukul.svg",
       "period": "Feb 2025 – Present",
       "liveUrl": "https://gurukul.definedgesecurities.com/",
@@ -113,7 +113,7 @@
     {
       "title": "Momentify",
       "slug": "momentify",
-      "summary": "Responsive Vue.js frontend with reusable components, REST API integration, search, filtering, and personalized content.",
+      "summary": "(Company Product) Responsive Vue.js frontend with reusable components, REST API integration, search, filtering, and personalized content.",
       "cover": "/work/momentify.svg",
       "period": "Feb 2025 – Present",
       "liveUrl": "https://momentify.definedgesecurities.com/",
@@ -132,7 +132,7 @@
     {
       "title": "Algo Trader",
       "slug": "algo-trader",
-      "summary": "Trading interface presenting market data, trading signals, and portfolio information through interactive dashboards.",
+      "summary": "(Company Product) Trading interface presenting market data, trading signals, and portfolio information through interactive dashboards.",
       "cover": "/work/algo-trader.svg",
       "period": "Feb 2025 – Present",
       "liveUrl": "https://algostra.definedgesecurities.com/",
@@ -153,6 +153,12 @@
       "summary": "Full-stack application that generates ATS-friendly resumes and tailored application materials.",
       "cover": "/work/ai-resume-builder.svg",
       "liveUrl": "https://resume-builder-rho-woad.vercel.app/",
+      "links": [
+        {
+          "label": "Source Code (GitHub)",
+          "href": "https://github.com/pritamkumarbishwas/resume-builder.git"
+        }
+      ],
       "techStack": [
         "FastAPI",
         "Python",
@@ -179,6 +185,12 @@
       "summary": "Full-stack ChatGPT-style application where users chat with multiple LLMs, with streamed responses, persistent conversation history, and a responsive interface.",
       "cover": "/work/chat-ai.svg",
       "liveUrl": "https://chat-ai-f3n9-eight.vercel.app/",
+      "links": [
+        {
+          "label": "Source Code (GitHub)",
+          "href": "https://github.com/pritamkumarbishwas/chat-ai.git"
+        }
+      ],
       "techStack": [
         "React",
         "TypeScript",
@@ -219,7 +231,7 @@
     {
       "title": "FortuneTalk Application",
       "slug": "fortunetalk",
-      "summary": "Communication and astrology platform with call, chat, video, insights, e-commerce, and learning sections, powered by third-party integrations for OTP, payments, and video calls.",
+      "summary": "(Client Project) Communication and astrology platform with call, chat, video, insights, e-commerce, and learning sections, powered by third-party integrations for OTP, payments, and video calls.",
       "cover": "/work/fortunetalk.svg",
       "period": "Apr 2024 – Aug 2024",
       "links": [
