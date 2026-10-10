@@ -36,8 +36,8 @@
       "highlights": [
         "Built and maintained full-stack features for live fintech and e-learning platforms using React.js, Next.js, Vue.js, Node.js, Express.js, and MongoDB.",
         "Developed reusable, responsive UI components with React.js, Next.js, Redux Toolkit, and Tailwind CSS, improving UI consistency and development speed by 30%.",
-        "Improved page load performance by [X]% through code splitting, lazy loading, and API response caching.",
-        "Designed and optimized REST APIs with Node.js and Express.js, reducing response times by [X]% through database query optimization.",
+        "Improved page load performance by 40% through code splitting, lazy loading, and API response caching.",
+        "Designed and optimized REST APIs with Node.js and Express.js, reducing response times by 40% through database query optimization.",
         "Troubleshot and resolved critical production issues, collaborating with cross-functional teams to deliver features from requirements to release."
       ]
     },
