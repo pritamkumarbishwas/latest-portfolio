@@ -295,7 +295,8 @@
         "Redux Toolkit",
         "Tailwind CSS",
         "MUI",
-        "RTK Query"
+        "RTK Query",
+        "Radix UI"
       ]
     },
     {
@@ -305,6 +306,7 @@
         "Express.js",
         "REST APIs",
         "WebSockets",
+        "Server-Sent Events (SSE)",
         "Asynchronous APIs",
         "Webhooks",
         "Cron Jobs"
@@ -355,6 +357,7 @@
         "VS Code",
         "Postman",
         "Vite",
+        "Webpack",
         "Linux CLI"
       ]
     },
@@ -371,6 +374,12 @@
       "skills": [
         "Data Structures & Algorithms",
         "System Architecture",
+        "React Server Components (RSC)",
+        "Next.js App Router",
+        "Server Actions",
+        "Incremental Static Regeneration (ISR)",
+        "Server-Side Rendering (SSR)",
+        "Static Site Generation (SSG)",
         "API Optimization",
         "Query Optimization",
         "Caching Strategies",
@@ -393,7 +402,19 @@
       "skills": [
         "FastAPI",
         "Pydantic",
-        "Uvicorn"
+        "Uvicorn",
+        "PHP",
+        "CodeIgniter",
+        "Bootstrap"
+      ]
+    },
+    {
+      "category": "Integrations",
+      "skills": [
+        "Payment Gateways (Razorpay)",
+        "WebRTC / Video APIs",
+        "SMS / OTP Gateways",
+        "Google reCAPTCHA"
       ]
     }
   ],
