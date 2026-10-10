@@ -11,7 +11,7 @@ import { cn } from "@/lib/utils";
 const trackClassName =
   "stagger -mx-6 flex snap-x snap-mandatory gap-6 overflow-x-auto scroll-px-6 px-6 pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden";
 
-const slideClassName = "w-[82vw] shrink-0 snap-start sm:w-[20rem] lg:w-[24rem] xl:w-[26rem]";
+const slideClassName = "w-[85vw] shrink-0 snap-start sm:w-[18rem] md:w-[20rem] lg:w-[22rem] xl:w-[24rem]";
 
 const navButtonClassName =
   "inline-flex size-10 items-center justify-center rounded-full border border-border-strong text-foreground transition-colors hover:border-accent-text hover:text-accent-text disabled:pointer-events-none disabled:opacity-40";
