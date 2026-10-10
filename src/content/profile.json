@@ -339,6 +339,7 @@
     {
       "category": "Python Libraries",
       "skills": [
+        "Django",
         "PyMuPDF",
         "python-docx",
         "Jinja2",
@@ -455,6 +456,7 @@
       "issuer": "Meta",
       "platform": "Coursera",
       "date": "May 2026",
+      "url": "https://coursera.org/verify/professional-cert/YOUR_CERT_ID",
       "description": "Completed a 9-course professional certificate program focused on Python, Django, REST APIs, SQL, Version Control, Back-End Development, and Coding Interview Preparation."
     },
     {
@@ -462,6 +464,7 @@
       "issuer": "Meta",
       "platform": "Coursera",
       "date": "Apr 2026",
+      "url": "https://coursera.org/verify/professional-cert/YOUR_CERT_ID",
       "description": "Completed a 10-course specialization covering Front-End Development, JavaScript, Version Control, HTML/CSS, React, Python, Databases, Django, and APIs."
     }
   ],
