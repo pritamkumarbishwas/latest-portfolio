@@ -103,14 +103,17 @@ export async function checkChatRateLimit(ip: string): Promise<ChatRateLimitResul
 
 /** First client IP from x-forwarded-for (untrusted but platform-provided), capped for safety. */
 export function getClientIp(request: Request): string {
+  // Prefer x-real-ip as it's typically set directly by the proxy (e.g. Vercel, Nginx)
+  const realIp = request.headers.get("x-real-ip")?.trim();
+  if (realIp && realIp.length <= 45) return realIp;
+
+  // Fallback to x-forwarded-for, but be aware this can be spoofed by the client
+  // in some configurations if the proxy just appends to it.
   const forwarded = request.headers.get("x-forwarded-for");
   if (forwarded) {
     const first = forwarded.split(",")[0]?.trim();
     if (first && first.length <= 45) return first;
   }
-
-  const realIp = request.headers.get("x-real-ip")?.trim();
-  if (realIp && realIp.length <= 45) return realIp;
 
   return "unknown";
 }
