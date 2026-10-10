@@ -24,8 +24,8 @@
       }
     ]
   },
-  "summary": "Full-Stack Engineer with 3+ years of experience building scalable web applications with React.js, Next.js, Vue.js, Node.js, Express.js, and TypeScript. Experienced in REST APIs, authentication, payments, and database-driven features, with a record of debugging production issues on live fintech and e-learning platforms.",
-  "summaryShort": "Full-Stack Engineer with 3+ years of experience building scalable web apps with React.js, Next.js, Vue.js, Node.js, and TypeScript.",
+  "summary": "Full-Stack Engineer with 3+ years of experience building scalable web applications and integrating AI/LLM tools using React.js, Next.js, Vue.js, Node.js, and Python. Experienced in REST APIs, authentication, payments, and database-driven features, with a record of debugging production issues on live fintech and e-learning platforms.",
+  "summaryShort": "Full-Stack Engineer with 3+ years of experience building scalable web apps and AI-native tools with React.js, Next.js, Node.js, and Python.",
   "experience": [
     {
       "company": "Definedge Solution Pvt. Ltd.",
@@ -35,15 +35,15 @@
       "mode": "On-Site",
       "highlights": [
         "Built and maintained full-stack features for live fintech and e-learning platforms using React.js, Next.js, Vue.js, Node.js, Express.js, and MongoDB.",
-        "Developed reusable, responsive UI components with React.js, Next.js, Redux Toolkit, and Tailwind CSS, improving consistency across the platform.",
-        "Improved page load performance through code splitting, lazy loading, and API response caching.",
-        "Designed and optimized REST APIs with Node.js and Express.js, improving response times through database query optimization.",
-        "Troubleshot and resolved production issues, collaborating with cross-functional teams to deliver features from requirements to release."
+        "Developed reusable, responsive UI components with React.js, Next.js, Redux Toolkit, and Tailwind CSS, improving UI consistency and development speed by [X]%.",
+        "Improved page load performance by [X]% through code splitting, lazy loading, and API response caching.",
+        "Designed and optimized REST APIs with Node.js and Express.js, reducing response times by [X]% through database query optimization.",
+        "Troubleshot and resolved critical production issues, collaborating with cross-functional teams to deliver features from requirements to release."
       ]
     },
     {
-      "company": "Freelance",
-      "role": "Full-Stack Developer",
+      "company": "Independent Consultant",
+      "role": "Full-Stack Engineer (Freelance)",
       "period": "Jan 2023 – Jan 2025",
       "mode": "Remote",
       "techStack": [
@@ -425,6 +425,15 @@
         "WebRTC / Video APIs",
         "SMS / OTP Gateways",
         "Google reCAPTCHA"
+      ]
+    },
+    {
+      "category": "Domains",
+      "skills": [
+        "FinTech (Trading Platforms)",
+        "EdTech (E-Learning)",
+        "E-Commerce",
+        "Astrology & Communication"
       ]
     }
   ],
