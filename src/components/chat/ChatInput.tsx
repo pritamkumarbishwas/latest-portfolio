@@ -113,7 +113,11 @@ export function ChatInput({ onSend, onStop, busy, maxLength }: ChatInputProps) {
               aria-label="Send message"
               className="size-11 rounded-full shadow-sm transition-transform active:scale-95 sm:size-9"
             >
-              <Send className="size-4" aria-hidden="true" />
+              <Send
+                className="h-4 w-4 shrink-0"
+                strokeWidth={2}
+                aria-hidden="true"
+              />
             </Button>
           )}
         </div>
