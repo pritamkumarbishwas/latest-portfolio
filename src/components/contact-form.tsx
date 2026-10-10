@@ -119,6 +119,7 @@ export function ContactForm() {
             type="text"
             autoComplete="name"
             placeholder="Enter your full name"
+            suppressHydrationWarning
             required
             className="mt-2"
             aria-invalid={errors.name ? true : undefined}
@@ -141,6 +142,7 @@ export function ContactForm() {
             type="email"
             autoComplete="email"
             placeholder="Enter your email address"
+            suppressHydrationWarning
             required
             className="mt-2"
             aria-invalid={errors.email ? true : undefined}
@@ -169,6 +171,7 @@ export function ContactForm() {
           id="contact-message"
           rows={6}
           placeholder="Please share details about your project or the role you are hiring for..."
+          suppressHydrationWarning
           required
           className="mt-2"
           aria-invalid={errors.message ? true : undefined}
@@ -194,12 +197,13 @@ export function ContactForm() {
           type="text"
           tabIndex={-1}
           autoComplete="off"
+          suppressHydrationWarning
           {...register("website")}
         />
       </div>
 
       <div className="flex flex-wrap items-center gap-4">
-        <Button type="submit" disabled={isSubmitting}>
+        <Button type="submit" disabled={isSubmitting} suppressHydrationWarning>
           {isSubmitting ? "Sending…" : "Send message"}
         </Button>
         <a
