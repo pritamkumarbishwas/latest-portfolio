@@ -3,52 +3,65 @@ import { checkRateLimit } from "@/lib/rate-limit";
 import { contactFormSchema } from "@/lib/schemas";
 
 function clientIp(request: Request): string {
-  const realIp = request.headers.get("x-real-ip");
-  if (realIp) return realIp.trim();
   const forwarded = request.headers.get("x-forwarded-for");
   if (forwarded) return forwarded.split(",")[0]?.trim() || "unknown";
+  const realIp = request.headers.get("x-real-ip");
+  if (realIp) return realIp.trim();
   return "unknown";
 }
 
+function escapeHtml(value: string): string {
+  return value
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
+}
+
+type BrevoConfig = {
+  apiKey: string;
+  senderEmail: string;
+  senderName: string;
+};
+
 type SendEmailParams = {
   to: string;
-  toName?: string;
   subject: string;
   html: string;
   replyTo?: { email: string; name?: string };
 };
 
-async function sendEmail({ to, toName, subject, html, replyTo }: SendEmailParams) {
-  const payload: any = {
-    sender: {
-      name: process.env.BREVO_SENDER_NAME || "Portfolio Contact Form",
-      email: process.env.BREVO_SENDER_EMAIL,
-    },
-    to: [{ email: to, name: toName }],
+async function sendEmail(
+  config: BrevoConfig,
+  { to, subject, html, replyTo }: SendEmailParams,
+) {
+  const payload: Record<string, unknown> = {
+    sender: { name: config.senderName, email: config.senderEmail },
+    to: [{ email: to }],
     subject,
     htmlContent: html,
   };
 
-  if (replyTo) {
-    payload.replyTo = replyTo;
-  }
+  if (replyTo) payload.replyTo = replyTo;
 
   const res = await fetch("https://api.brevo.com/v3/smtp/email", {
     method: "POST",
     headers: {
-      "api-key": process.env.BREVO_API_KEY!,
+      "api-key": config.apiKey,
       "Content-Type": "application/json",
       accept: "application/json",
     },
     body: JSON.stringify(payload),
+    signal: AbortSignal.timeout(10_000), // 10s timeout
   });
 
   if (!res.ok) {
-    const error = await res.text();
-    throw new Error(`Brevo error ${res.status}: ${error}`);
+    const errorText = await res.text();
+    throw new Error(`Brevo error ${res.status}: ${errorText}`);
   }
 
-  return res.json();
+  return res.json() as Promise<{ messageId?: string }>;
 }
 
 export async function POST(request: Request) {
@@ -82,6 +95,7 @@ export async function POST(request: Request) {
       ? (body as Record<string, unknown>)
       : {};
 
+  // Honeypot: bots fill this hidden field
   if (typeof record.website === "string" && record.website.trim() !== "") {
     return NextResponse.json({ ok: true });
   }
@@ -94,11 +108,7 @@ export async function POST(request: Request) {
       if (!fields[key]) fields[key] = issue.message;
     }
     return NextResponse.json(
-      {
-        ok: false,
-        error: "Please fix the highlighted fields.",
-        fields,
-      },
+      { ok: false, error: "Please fix the highlighted fields.", fields },
       { status: 422 },
     );
   }
@@ -108,8 +118,13 @@ export async function POST(request: Request) {
   const apiKey = process.env.BREVO_API_KEY;
   const senderEmail = process.env.BREVO_SENDER_EMAIL;
   const to = process.env.CONTACT_TO_EMAIL;
-  
+
+  console.log("apiKey==========", apiKey)
+  console.log("senderEmail==========", senderEmail)
+  console.log("to==========", to)
+
   if (!apiKey || !to || !senderEmail) {
+    console.error("[contact] missing env: BREVO_API_KEY / BREVO_SENDER_EMAIL / CONTACT_TO_EMAIL");
     return NextResponse.json(
       {
         ok: false,
@@ -120,27 +135,39 @@ export async function POST(request: Request) {
     );
   }
 
-  try {
-    await sendEmail({
+  const safeName = escapeHtml(name);
+  const safeEmail = escapeHtml(email);
+  const safeMessage = escapeHtml(message).replace(/\r?\n/g, "<br/>");
+  const subjectName = name.replace(/[\r\n]+/g, " ").slice(0, 80);
+
+  // try {
+  await sendEmail(
+    {
+      apiKey,
+      senderEmail,
+      senderName: process.env.BREVO_SENDER_NAME || "Portfolio Contact Form",
+    },
+    {
       to,
-      subject: `Portfolio contact from ${name}`,
-      html: `<p><strong>Name:</strong> ${name}</p>
-             <p><strong>Email:</strong> ${email}</p>
-             <p><strong>Message:</strong></p>
-             <p>${message.replace(/\n/g, '<br/>')}</p>`,
-      replyTo: { email, name },
-    });
-  } catch (error) {
-    console.error("[contact] brevo failed:", error);
-    return NextResponse.json(
-      {
-        ok: false,
-        error:
-          "Couldn’t send your message right now — please try again or use the direct email link.",
-      },
-      { status: 502 },
-    );
-  }
+      subject: `Portfolio contact from ${subjectName}`,
+      html: `<p><strong>Name:</strong> ${safeName}</p>
+               <p><strong>Email:</strong> ${safeEmail}</p>
+               <p><strong>Message:</strong></p>
+               <p>${safeMessage}</p>`,
+      replyTo: { email, name: subjectName },
+    },
+  );
+  // } catch (error) {
+  //   console.error("[contact] brevo failed:", error);
+  //   return NextResponse.json(
+  //     {
+  //       ok: false,
+  //       error:
+  //         "Couldn’t send your message right now — please try again or use the direct email link.",
+  //     },
+  //     { status: 502 },
+  //   );
+  // }
 
   return NextResponse.json({ ok: true });
 }
