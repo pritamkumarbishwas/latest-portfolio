@@ -337,7 +337,6 @@
       "category": "Databases",
       "skills": [
         "MySQL",
-        "PostgreSQL",
         "MongoDB",
         "Redis",
         "Mongoose"
@@ -422,7 +421,7 @@
     {
       "category": "Integrations",
       "skills": [
-        "Payment Gateways (Razorpay)",
+        "Payment Gateways (Razorpay, PayU, PhonePe)",
         "WebRTC / Video APIs",
         "SMS / OTP Gateways",
         "Google reCAPTCHA"
