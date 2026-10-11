@@ -23,7 +23,7 @@ function escapeHtml(value: string): string {
 }
 
 type BrevoConfig = {
-  smtpUser: string;
+  smtpUser?: string;
   apiKey: string;
   senderEmail: string;
   senderName: string;
@@ -36,10 +36,45 @@ type SendEmailParams = {
   replyTo?: { email: string; name?: string };
 };
 
-async function sendEmail(
+async function sendEmailViaRest(
   config: BrevoConfig,
   { to, subject, html, replyTo }: SendEmailParams,
 ) {
+  const response = await fetch("https://api.brevo.com/v3/smtp/email", {
+    method: "POST",
+    headers: {
+      accept: "application/json",
+      "api-key": config.apiKey,
+      "content-type": "application/json",
+    },
+    body: JSON.stringify({
+      sender: { name: config.senderName, email: config.senderEmail },
+      to: [{ email: to }],
+      subject,
+      htmlContent: html,
+      replyTo: replyTo ? { email: replyTo.email, name: replyTo.name } : undefined,
+    }),
+  });
+
+  const data = (await response.json().catch(() => null)) as
+    | { message?: string; messageId?: string }
+    | null;
+
+  if (!response.ok) {
+    throw new Error(data?.message || `Brevo REST API failed (${response.status})`);
+  }
+
+  return { messageId: data?.messageId };
+}
+
+async function sendEmailViaSmtp(
+  config: BrevoConfig,
+  { to, subject, html, replyTo }: SendEmailParams,
+) {
+  if (!config.smtpUser) {
+    throw new Error("BREVO_SMTP_USER is required for Brevo SMTP relay.");
+  }
+
   const transporter = nodemailer.createTransport({
     host: "smtp-relay.brevo.com",
     port: 587,
@@ -65,6 +100,18 @@ async function sendEmail(
   });
 
   return { messageId: info.messageId };
+}
+
+async function sendEmail(
+  config: BrevoConfig,
+  params: SendEmailParams,
+) {
+  // If an API key (xkeysib-) is provided, use Brevo's HTTPS REST API.
+  // If an SMTP key (xsmtpsib-) is provided, use Nodemailer SMTP relay.
+  if (config.apiKey.startsWith("xkeysib-")) {
+    return sendEmailViaRest(config, params);
+  }
+  return sendEmailViaSmtp(config, params);
 }
 
 export async function POST(request: Request) {
@@ -123,14 +170,12 @@ export async function POST(request: Request) {
   const senderEmail = process.env.BREVO_SENDER_EMAIL;
   const to = process.env.CONTACT_TO_EMAIL;
 
-  console.log("apiKey==========", apiKey)
-  console.log("smtpUser==========", smtpUser)
-  console.log("senderEmail==========", senderEmail)
-  console.log("to==========", to)
+  const isRestKey = apiKey?.startsWith("xkeysib-");
 
-  if (!apiKey || !smtpUser || !to || !senderEmail) {
+  if (!apiKey || (!isRestKey && !smtpUser) || !to || !senderEmail) {
     console.error(
-      "[contact] missing env: BREVO_API_KEY / BREVO_SMTP_USER / BREVO_SENDER_EMAIL / CONTACT_TO_EMAIL",
+      "[contact] missing env: BREVO_API_KEY / BREVO_SENDER_EMAIL / CONTACT_TO_EMAIL" +
+        (!isRestKey ? " / BREVO_SMTP_USER" : ""),
     );
     return NextResponse.json(
       {
