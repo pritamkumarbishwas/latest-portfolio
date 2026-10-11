@@ -79,7 +79,7 @@ export function Hero() {
           </Link>
           <a
             href="/resume.pdf"
-            download={`Pritam_kumar_bishwas_${new Date().toISOString().split('T')[0]}.pdf`}
+            download="Pritam_Kumar_Bishwas_Resume.pdf"
             className={buttonVariants({ variant: "ghost" })}
           >
             <Download className="size-4" aria-hidden="true" />
